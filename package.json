@@ -7,9 +7,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/simplesphere/simplesurvey"
+    "url": "https://github.com/p1brighto/simple-survey-part2"
   },
-  "author": "simplesphere",
+  "author": "simplesphere,p1brighto,divyRaval",
   "description": "A simple survey app using MEAN stack using passportjs for authentication.",
   "license": "MIT",
   "dependencies": {
