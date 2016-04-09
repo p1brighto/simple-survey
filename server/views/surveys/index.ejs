@@ -1,44 +1,51 @@
 <% include ../partials/header.ejs %>
 <% include ../partials/navbar.ejs %>
-<main class="container">
-    
-    <div class="row">
-        <div class="col-md-9">
+
+  <section id="top-banner" class="section bg-intro intro-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 page-title">
+          <h2>Welcome to your dashboard, <%= displayName %></h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section" id="dashboard-listing">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">          
             <h2>Survey Listing</h2>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <a href="#" class="btn btn-default btn-blue">Add New Survey</a>
         </div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Survey Title</th>
+                <th>Date Created</th>
+                <th>Username</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td></td>
+                <td></td>
+                <td>@</td>
+              </tr>
+            </tbody> 
+          </table>
+        </div>
+      </div>
     </div>
-    
-    <hr/>
+  </section>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h4>Survey Title</h4>
-        </div>
-        <div class="col-md-4">
-            <h4>Date Created</h4>
-        </div>
-        <div class="col-md-4">
-            <h4>Author</h4>
-        </div>
-        <div class="col-md-4">
-
-        </div>
-    </div>
-
-    <hr/>
-
-    <ul class="list-group">
-        <% for (var i = 0; i < surveys.length; i++) { %>
-            <li class="list-group-item">
-                username: 
-                <a href="/surveys/<%= surveys[i]._id %>" title="Edit User">
-                    <%= surveys[i].surveyTitle %>
-                </a>
-            </li>
-        <% } %>
-    </ul>
-</main>
 <% include ../partials/footer.ejs %>

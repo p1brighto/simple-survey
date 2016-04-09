@@ -28,6 +28,7 @@ var myerror = new CustomError();
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var survey = require('./routes/survey');
 
 var app = express();
 
@@ -65,6 +66,7 @@ passport.deserializeUser(User.deserializeUser());
 // Route Definitions
 app.use('/', routes);
 app.use('/users', users);
+app.use('/survey',survey);
 
 // connect to mongodb with mongoose
 var DB = require('./config/db');
