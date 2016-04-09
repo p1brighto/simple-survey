@@ -2,28 +2,29 @@ import mongoose = require('mongoose');
 import passportLocalMongoose = require('passport-local-mongoose');
 
 // DEFINE THE OBJECT SCHEMA
-var userSchema = new mongoose.Schema({
-    title:{
+var surveySchema = new mongoose.Schema({
+    surveyTitle: {
         type: String,
         default: '',
         trim: true,
-        required: 'title is required'
+        required: 'Survey Title is required'
     },
-    questions:{
+    surveyContent: {
         type: String,
         default: '',
         trim: true,
-        required: 'questions is required'        
+        required: 'Content is required'
     },
-    answers:{
-        type: String,
-        default: '',
-        trim: true,
-        required: 'questions is required'
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    updated: {
+        type: Date,
+        default: Date.now
     }
 },
-    
 { collection: 'surveyInfo' });
 
 // MAKE THIS PUBLIC SO THE CONTROLLER CAN SEE IT
-export var User = mongoose.model('User', userSchema);
+export var Survey = mongoose.model('Survey', surveySchema);
