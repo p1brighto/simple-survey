@@ -1,4 +1,5 @@
 import express = require('express');
+import passport = require('passport');
 var router = express.Router();
 
 // db references
@@ -7,8 +8,17 @@ import surveyModel = require('../models/survey');
 
 import Survey = surveyModel.Survey;
 
+/* Utility Function to check if user is authenticated */
+function requireAuth(req:express.Request, res:express.Response, next: any) {
+    // check if the user is logged in
+    if (!req.isAuthenticated()) {
+        return res.redirect('/login');
+    }
+    next();
+}
+
 // GET - show main survey page
-router.get('/', (req: express.Request, res: express.Response, next: any) => {
+router.get('/',requireAuth, (req: express.Request, res: express.Response, next: any) => {
 
     // use the Survey model to query the Surveys collection
     Survey.find(function(error, surveys) {

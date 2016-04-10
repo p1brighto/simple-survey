@@ -3,8 +3,16 @@ var express = require('express');
 var router = express.Router();
 var surveyModel = require('../models/survey');
 var Survey = surveyModel.Survey;
+/* Utility Function to check if user is authenticated */
+function requireAuth(req, res, next) {
+    // check if the user is logged in
+    if (!req.isAuthenticated()) {
+        return res.redirect('/login');
+    }
+    next();
+}
 // GET - show main survey page
-router.get('/', function (req, res, next) {
+router.get('/', requireAuth, function (req, res, next) {
     // use the Survey model to query the Surveys collection
     Survey.find(function (error, surveys) {
         if (error) {

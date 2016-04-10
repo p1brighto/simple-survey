@@ -67,13 +67,13 @@ router.get('/login', (req:express.Request, res: express.Response, next:any) => {
         });
         return;
     } else {
-        return res.redirect('/users');
+        return res.redirect('/survey');
     }
 });
 
 /* Process Login Request */
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/users',
+    successRedirect: '/survey',
     failureRedirect: '/login',
     failureFlash: true
 }));
@@ -149,7 +149,7 @@ router.post('/register', (req:express.Request, res: express.Response, next:any) 
            }
            // if registration is successful
            return passport.authenticate('local')(req, res, ()=>{
-              res.redirect('/users'); 
+              res.redirect('/survey'); 
            });
        });
 });
