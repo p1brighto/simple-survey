@@ -7,7 +7,7 @@ import surveyModel = require('../models/survey');
 
 import Survey = surveyModel.Survey;
 
-// GET - show main aritcles page
+// GET - show main survey page
 router.get('/', (req: express.Request, res: express.Response, next: any) => {
 
     // use the Survey model to query the Surveys collection
@@ -18,9 +18,10 @@ router.get('/', (req: express.Request, res: express.Response, next: any) => {
         }
         else {
             // no error, we found a list of surveys
-            res.render('surveys/index', {
-                title: 'Surveys',
-                surveys: surveys
+            res.render('survey/index', {
+                title: 'Survey',
+                surveys: surveys,
+                displayName: req.user ? req.user.displayName : ''
             });
         }
     });
@@ -28,7 +29,7 @@ router.get('/', (req: express.Request, res: express.Response, next: any) => {
 
 // GET add page - show the blank form
 router.get('/add', function(req: express.Request, res: express.Response, next: any) {
-    res.render('surveys/add', {
+    res.render('survey/add', {
         title: 'Add a New Survey'
     });
 });
@@ -45,7 +46,7 @@ router.post('/add', function(req: express.Request, res: express.Response, next: 
             res.end(error);
         }
         else {
-            res.redirect('/surveys');
+            res.redirect('/survey');
         }
     })
 });
@@ -62,9 +63,10 @@ router.get('/:id', (req: express.Request, res: express.Response, next: any) => {
         }
         else {
             //show the edit view
-            res.render('surveys/edit', {
+            res.render('survey/edit', {
                 title: 'Survey Details',
-                survey: Survey
+                survey: Survey,
+                displayName: req.user ? req.user.displayName : ''
             });
         }
     });
@@ -90,7 +92,7 @@ router.post('/:id', (req: express.Request, res: express.Response, next: any) => 
             res.end(error);
         }
         else {
-            res.redirect('/surveys');
+            res.redirect('/survey');
         }
     });
 });
@@ -108,7 +110,7 @@ router.get('/delete/:id', (req: express.Request, res: express.Response, next: an
             res.end(error);
         }
         else {
-            res.redirect('/surveys');
+            res.redirect('/survey');
         }
     });
 });
