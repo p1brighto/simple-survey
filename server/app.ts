@@ -11,7 +11,6 @@ import mongoose = require('mongoose');
 
 // User
 import userModel = require('./models/user');
-
 import User = userModel.User;
 
 import session = require('express-session');
@@ -78,7 +77,6 @@ db.on('error', console.error.bind(console, 'Connection Error: '));
 db.once('open', function(callback) {
     console.log('Connected to mongoLab');
 });
-
 
 // catch 404 and forward to error handler
 app.use((req: express.Request, res: express.Response, next: any) => {

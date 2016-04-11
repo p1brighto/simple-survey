@@ -1,0 +1,51 @@
+<% include partials/header.ejs %>
+<% include partials/navbar.ejs %>
+
+  <section id="top-banner" class="section bg-intro intro-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 page-title">
+          <h2>Welcome to your dashboard, <%= displayName %></h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section" id="dashboard-listing">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">          
+            <h2>Survey Listing</h2>
+        </div>
+        <div class="col-md-4">
+            <a href="/survey/add" class="btn btn-default btn-blue">Add New Survey</a>
+        </div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Survey Title</th>
+                <th>Date Created</th>
+                <th>Username</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td></td>
+                <td></td>
+                <td>@</td>
+              </tr>
+            </tbody> 
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<% include partials/footer.ejs %>

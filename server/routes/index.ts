@@ -21,18 +21,39 @@ router.get('/about-us', (req: express.Request, res: express.Response, next: any)
         displayName: req.user ? req.user.displayName : '' });
 });
 
+/* GET browse surveys page. */
+router.get('/browse-surveys', (req: express.Request, res: express.Response, next: any) => {
+    res.render('browse-surveys', { 
+        title: 'Browse-surveys',
+        displayName: req.user ? req.user.displayName : '' });
+});
+
+/* GET survey results page. */
+router.get('/survey-results', (req: express.Request, res: express.Response, next: any) => {
+    res.render('survey-results', { 
+        title: 'Survey-results',
+        displayName: req.user ? req.user.displayName : '' });
+});
+
+/* GET Dashboard */
+router.get('/dashboard', (req: express.Request, res: express.Response, next: any) => {
+  res.render('dashboard', {
+    title: 'Dashboard',
+    displayName: req.user ? req.user.displayName : ''});
+});
+
 /* GET contact page. */
 router.get('/contact-us', (req: express.Request, res: express.Response, next: any) => {
     req.flash('successmessage', 'Your message has been submitted. We will get back to you shortly!');
     req.flash('errormessage','Oops, something went wrong!');
     res.render('contact-us', { 
-        title: 'Contact', 
+        title: 'Contact-us',
         messages: null,
         displayName: req.user ? req.user.displayName : '' });
 });
 
 /* Email processing */
-router.post('/contact', (req: express.Request, res: express.Response, next: any) => {
+router.post('/contact-us', (req: express.Request, res: express.Response, next: any) => {
     sendgrid.send({
         to: 'anoop.jeewoolall@gmail.com',
         from: req.body.email,
@@ -49,8 +70,8 @@ router.post('/contact', (req: express.Request, res: express.Response, next: any)
     (err, json) => {
         if (err) { res.status(500).json('error'); 
         }
-        res.render('contact', { 
-            title: 'Contact',
+        res.render('contact-us', { 
+            title: 'Contact-us',
             messages: req.flash('successmessage')
      });
 
@@ -67,13 +88,13 @@ router.get('/login', (req:express.Request, res: express.Response, next:any) => {
         });
         return;
     } else {
-        return res.redirect('/survey');
+        return res.redirect('/dashboard');
     }
 });
 
 /* Process Login Request */
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/survey',
+    successRedirect: '/dashboard',
     failureRedirect: '/login',
     failureFlash: true
 }));

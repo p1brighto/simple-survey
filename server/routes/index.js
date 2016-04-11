@@ -18,17 +18,35 @@ router.get('/about-us', function (req, res, next) {
         title: 'About Us',
         displayName: req.user ? req.user.displayName : '' });
 });
+/* GET browse surveys page. */
+router.get('/browse-surveys', function (req, res, next) {
+    res.render('browse-surveys', {
+        title: 'Browse-surveys',
+        displayName: req.user ? req.user.displayName : '' });
+});
+/* GET survey results page. */
+router.get('/survey-results', function (req, res, next) {
+    res.render('survey-results', {
+        title: 'Survey-results',
+        displayName: req.user ? req.user.displayName : '' });
+});
+/* GET Dashboard */
+router.get('/dashboard', function (req, res, next) {
+    res.render('dashboard', {
+        title: 'Dashboard',
+        displayName: req.user ? req.user.displayName : '' });
+});
 /* GET contact page. */
 router.get('/contact-us', function (req, res, next) {
     req.flash('successmessage', 'Your message has been submitted. We will get back to you shortly!');
     req.flash('errormessage', 'Oops, something went wrong!');
     res.render('contact-us', {
-        title: 'Contact',
+        title: 'Contact-us',
         messages: null,
         displayName: req.user ? req.user.displayName : '' });
 });
 /* Email processing */
-router.post('/contact', function (req, res, next) {
+router.post('/contact-us', function (req, res, next) {
     sendgrid.send({
         to: 'anoop.jeewoolall@gmail.com',
         from: req.body.email,
@@ -45,8 +63,8 @@ router.post('/contact', function (req, res, next) {
         if (err) {
             res.status(500).json('error');
         }
-        res.render('contact', {
-            title: 'Contact',
+        res.render('contact-us', {
+            title: 'Contact-us',
             messages: req.flash('successmessage')
         });
     });
@@ -62,12 +80,12 @@ router.get('/login', function (req, res, next) {
         return;
     }
     else {
-        return res.redirect('/survey');
+        return res.redirect('/dashboard');
     }
 });
 /* Process Login Request */
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/survey',
+    successRedirect: '/dashboard',
     failureRedirect: '/login',
     failureFlash: true
 }));

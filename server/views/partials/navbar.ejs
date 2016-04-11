@@ -13,44 +13,73 @@
 
     <div class="collapse navbar-collapse" id="mobile-nav">    
       <ul class="nav navbar-nav navbar-right">
-        <% if(title === "Home") { %>
+        <% if(title == "Home") { %>
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="/survey-listing">Browse Surveys</a></li>
+            <li><a href="/browse-surveys">Browse Surveys</a></li>
             <li><a href="/survey-results">Survey Results</a></li>
             <li><a href="/about-us">About Us</a></li>
             <li><a href="/contact-us">Contact Us</a></li>
-        <% } else if(title == "Surveys") { %>
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/survey-listing">Browse Surveys</a></li>
+            <li class="menu-register"><a href="/register">Register</a></li>
+            <li class="menu-login"><a href="/login">Sign In</a></li>
+        <% } else if(title == "Browse-surveys") { %>
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/browse-surveys">Browse Surveys</a></li>
             <li><a href="/survey-results">Survey Results</a></li>
             <li><a href="/about-us">About Us</a></li>
             <li><a href="/contact-us">Contact Us</a></li>
-         <% } else if(title == "Stats") { %>
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/survey-listing">Browse Surveys</a></li>
+            <li class="menu-register"><a href="/register">Register</a></li>
+            <li class="menu-login"><a href="/login">Sign In</a></li>
+        <% } else if(title == "Survey-results") { %>
+            <li><a href="/">Home</a></li>
+            <li><a href="/browse-surveys">Browse Surveys</a></li>
+            <li class="active"><a href="/survey-results">Survey Results</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/contact-us">Contact Us</a></li>
+            <li class="menu-register"><a href="/register">Register</a></li>
+            <li class="menu-login"><a href="/login">Sign In</a></li>
+         <% } else if(title == "About-us") { %>
+            <li><a href="/">Home</a></li>
+            <li><a href="/browse-surveys">Browse Surveys</a></li>
+            <li><a href="/survey-results">Survey Results</a></li>
+            <li class="active"><a href="/about-us">About Us</a></li>
+            <li><a href="/contact-us">Contact Us</a></li>
+            <li class="menu-register"><a href="/register">Register</a></li>
+            <li class="menu-login"><a href="/login">Sign In</a></li>
+         <% } else if(title == "Contact-us") { %>
+            <li><a href="/">Home</a></li>
+            <li><a href="/browse-surveys">Browse Surveys</a></li>
+            <li><a href="/survey-results">Survey Results</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li class="active"><a href="/contact-us">Contact Us</a></li>
+            <li class="menu-register"><a href="/register">Register</a></li>
+            <li class="menu-login"><a href="/login">Sign In</a></li>
+         <% } else if(title == "Login") { %>
+            <li><a href="/">Home</a></li>
+            <li><a href="/browse-surveys">Browse Surveys</a></li>
             <li><a href="/survey-results">Survey Results</a></li>
             <li><a href="/about-us">About Us</a></li>
             <li><a href="/contact-us">Contact Us</a></li>
-         <% } else if(title == "Contact") { %>
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/survey-listing">Browse Surveys</a></li>
+            <li class="menu-register"><a href="/register">Register</a></li>
+            <li class="menu-login active"><a href="/login">Sign In</a></li>
+         <% } else if(title == "Register") { %>
+            <li><a href="/">Home</a></li>
+            <li><a href="/browse-surveys">Browse Surveys</a></li>
             <li><a href="/survey-results">Survey Results</a></li>
             <li><a href="/about-us">About Us</a></li>
             <li><a href="/contact-us">Contact Us</a></li>
+            <li class="menu-register active"><a href="/register">Register</a></li>
+            <li class="menu-login"><a href="/login">Sign In</a></li>
          <% } %>
          <% if(displayName) { %>
           <li class="dropdown">
-            <a class="dropdown-toggle disabled" data-toggle="dropdown" href="/users">Hey, <%= displayName %> <span class="caret"></span></a>
+            <a class="dropdown-toggle disabled" data-toggle="dropdown" href="/profile">Hey, <%= displayName %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="/survey">My Surveys</a></li>
-                <li><a href="/users">My Profile</a></li>
+                <li><a href="/profile">My Profile</a></li>
                 <li><a href="/logout"><i class="icon "></i> Logout</a></li>
             </ul>
           </li>
-         <% } else { %>         		
-            <li class="menu-register"><a href="/login">Register</a></li>
-            <li class="menu-login"><a href="/login">Sign In</a></li>
-         <% } %>
+         <% } %>         
       </ul>
     </div>
 
