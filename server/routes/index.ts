@@ -170,7 +170,7 @@ router.post('/register', (req:express.Request, res: express.Response, next:any) 
            }
            // if registration is successful
            return passport.authenticate('local')(req, res, ()=>{
-              res.redirect('/survey'); 
+              res.redirect('/dashboard'); 
            });
        });
 });
