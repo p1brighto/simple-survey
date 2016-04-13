@@ -1,32 +1,10 @@
 <% include ../partials/header.ejs %>
 <% include ../partials/navbar.ejs %>
-
-  <section id="top-banner" class="section bg-intro intro-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 page-title">
-          <h2>Edit your profile details</h2>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="user-profile" class="section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-
-
-          <div class="left-sidebar">
-            <ul>
-              <li><a href="/users/profile">My Account </a></li>
-              <li><a href="#" class="active">Edit my Account</a></li>
-              <li><a href="/logout">Sign Out</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-9">
-            <form method="post" class="login-form">
+<main class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <h1>Edit User</h1>
+            <form method="post">
                 <fieldset class="form-group">
                     <label for="username">Username: *</label>
                     <input name="username" class="form-control" required value="<%= user.username %>" />
@@ -54,8 +32,7 @@
                 </fieldset>
             </form>
         </div>
-      </div>
     </div>
-  </section>
 
+</main>
 <% include ../partials/footer.ejs %>

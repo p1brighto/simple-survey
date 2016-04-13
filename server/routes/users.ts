@@ -18,7 +18,7 @@ function requireAuth(req:express.Request, res:express.Response, next: any) {
 }
 
 // GET - show main users page - list all the users
-router.get('/', requireAuth, (req: express.Request, res: express.Response, next: any) => {
+router.get('/profile', requireAuth, (req: express.Request, res: express.Response, next: any) => {
    
     // use the Users model to query the Users collection
     User.find((error, users) => {
@@ -28,7 +28,7 @@ router.get('/', requireAuth, (req: express.Request, res: express.Response, next:
         }
         else {
             // no error, we found a list of users
-            res.render('users/index', {
+            res.render('users/profile', {
                 title: 'Users',
                 users: users,
                 displayName: req.user ? req.user.displayName : ''

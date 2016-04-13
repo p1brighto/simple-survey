@@ -9,6 +9,16 @@ var userSchema = new mongoose.Schema({
         trim: true,
         required: 'Username is required'
     },
+    firstName: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    lastName: {
+        type: String,
+        default: '',
+        trim: true
+    },
     password: {
         type: String,
         default: '',
@@ -36,7 +46,7 @@ var userSchema = new mongoose.Schema({
         default: Date.now
     }
 },
-    { collection: 'userInfo' });
+{ collection: 'userInfo' });
 
 var options = ({missingPasswordError: "Wrong password"});
 userSchema.plugin(passportLocalMongoose, options);
