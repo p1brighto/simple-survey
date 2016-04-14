@@ -161,23 +161,23 @@ router.post('/register', (req:express.Request, res: express.Response, next:any) 
     displayName: req.body.displayName,
     password: req.body.password,
     email: req.body.email
-  }), req.body.password, (err) => 
-    if(err) {
-      console.log('Error Inserting New Data');
-      if(err.name == 'UserExistsError') {
-      req.flash('registerMessage', 'Registration Error: User Already Exists!');
-    }
-    return res.render('register', {
-      title: 'Register',
-      messages: req.flash('registerMessage'),
-      displayName: req.user ? req.user.displayName : ''
+    }), req.body.password, (err) => {
+      if (err) {
+        console.log('Error Inserting New Data');
+        if (err.name == 'UserExistsError') {
+          req.flash('registerMessage', 'Registration Error: User Already Exists!');
+        }
+        return res.render('register', {
+          title: 'Register',
+          messages: req.flash('registerMessage'),
+          displayName: req.user ? req.user.displayName : ''
+        });
+      }
+      // if registration is successful
+      return passport.authenticate('local')(req, res, () => {
+        res.redirect('/users');
+      });
     });
-    }
-    // if registration is successful
-    return passport.authenticate('local')(req, res, ()=>{
-      res.redirect('/dashboard'); 
-    });
-  });
 });
 
 /* Process Logout Request */

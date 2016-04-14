@@ -161,7 +161,7 @@ router.post('/register', function (req, res, next) {
         }
         // if registration is successful
         return passport.authenticate('local')(req, res, function () {
-            res.redirect('/dashboard');
+            res.redirect('/users');
         });
     });
 });
