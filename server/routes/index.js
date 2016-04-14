@@ -139,10 +139,14 @@ router.get('/register', function (req, res, next) {
 /* Process Registration Request */
 router.post('/register', function (req, res, next) {
     // attempt to register user
-    User.register(new User({ username: req.body.username,
+    User.register(new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phone: req.body.phone,
+        username: req.body.username,
+        displayName: req.body.displayName,
         password: req.body.password,
-        email: req.body.email,
-        displayName: req.body.displayName
+        email: req.body.email
     }), req.body.password, function (err) {
         if (err) {
             console.log('Error Inserting New Data');

@@ -48,10 +48,13 @@ router.get('/add', requireAuth, (req: express.Request, res: express.Response, ne
 // POST add page - save the new user
 router.post('/add', requireAuth, (req: express.Request, res: express.Response, next: any) => {
     User.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phone: req.body.phone,
         username: req.body.username,
+        displayName: req.body.displayName,
         password: req.body.password,
         email: req.body.email,
-        displayName: req.body.displayName
     }, (error, User) => {
         // did we get back an error or valid Users object?
         if (error) {
@@ -101,10 +104,7 @@ router.post('/:id', requireAuth, (req: express.Request, res: express.Response, n
         password: req.body.password,
         email: req.body.email,
         displayName: req.body.displayName,
-
     });
-    
-    
 
     // run the update using mongoose and our model
     User.update({ _id: id }, user, (error) => {
@@ -133,7 +133,7 @@ router.get('/delete/:id', requireAuth, (req: express.Request, res: express.Respo
         }
         else {
             // if removal worked redirect to users page
-            res.redirect('/users');
+            res.redirect('/login');
         }
     });
 });

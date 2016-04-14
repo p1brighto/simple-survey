@@ -39,10 +39,13 @@ router.get('/add', requireAuth, function (req, res, next) {
 // POST add page - save the new user
 router.post('/add', requireAuth, function (req, res, next) {
     User.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phone: req.body.phone,
         username: req.body.username,
+        displayName: req.body.displayName,
         password: req.body.password,
         email: req.body.email,
-        displayName: req.body.displayName
     }, function (error, User) {
         // did we get back an error or valid Users object?
         if (error) {
@@ -111,7 +114,7 @@ router.get('/delete/:id', requireAuth, function (req, res, next) {
         }
         else {
             // if removal worked redirect to users page
-            res.redirect('/users');
+            res.redirect('/login');
         }
     });
 });

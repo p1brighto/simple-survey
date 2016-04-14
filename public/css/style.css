@@ -5,6 +5,10 @@ Website         :   https://wrapbootstrap.com/user/simplesphere
 Date            :   08 April 2015
 ========================================================================== */ 
 
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Crimson+Text:400,700,600);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+
 /* ==========================================================================
 HTML5 display-role reset for older browsers
 ========================================================================== */ 
@@ -99,7 +103,7 @@ Classes
 /* ==========================================================================
 Buttons
 ========================================================================== */ 
-.btn-blue { font-size: 14px; font-family: "Montserrat", sans-serif; letter-spacing: 1px; padding: 15px 30px; background: #3598dc; border: 2px solid #3598dc; color: #FFF; font-weight: bold; border-radius: 0; text-transform: uppercase;}
+.btn-blue { font-size: 14px; font-family: "Montserrat", sans-serif; letter-spacing: 1px; padding: 15px 30px; background: #3598dc!important; border: 2px solid #3598dc!important; color: #FFF; font-weight: bold; border-radius: 0; text-transform: uppercase;}
 
 .btn-blue:hover {background-color: #1a1a1a; color: #FFF;}
 
@@ -214,10 +218,12 @@ Dropdown
  ========================================================================== */
  
 .navbar-nav > li > .dropdown-menu {border-radius: 0; box-shadow: none; padding: 0; min-width: 200px;}
-.navbar-nav > li > .dropdown-menu > li {padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); background-color: #1a1a1a; }
-.navbar-nav > li > .dropdown-menu > li > a {color: #FFF;  font-size: 12px; font-family: "Montserrat", "Montserrat", Lucida Sans Unicode; padding: 0; border: none; margin: 0;}
+.navbar-nav > li > .dropdown-menu > li { margin: 0;padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); background-color: #1a1a1a; }
+.navbar-nav > li > .dropdown-menu > li > a {color: #FFF;  font-size: 12px; font-family: "Montserrat", Lucida Sans Unicode; padding: 0; border: none; margin: 0; text-transform: uppercase;}
+.navbar-nav > li > .dropdown-menu > li > a:after {content: none;}
 .navbar-nav > li > .dropdown-menu > li:last-child {border: none;}
-.navbar-nav > li > .dropdown-menu > li > a:hover {background-color: #131313; padding: 0; border: none; margin: 0;}
+.navbar-nav > li > .dropdown-menu > li:hover {background-color: #000;}
+.navbar-nav > li > .dropdown-menu > li > a:hover {background-color: transparent; padding: 0; border: none; margin: 0;}
 .navbar-nav > li > .dropdown-menu > li > a:hover:after {content: none;}
 
 /* ==========================================================================

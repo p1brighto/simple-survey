@@ -150,29 +150,34 @@ router.get('/register', (req:express.Request, res: express.Response, next:any) =
 
 /* Process Registration Request */
 router.post('/register', (req:express.Request, res: express.Response, next:any) => {
-    // attempt to register user
-    User.register(new User(
-       { username: req.body.username,
-         password: req.body.password,
-         email: req.body.email,
-         displayName: req.body.displayName
-       }), req.body.password, (err) => {
-           if(err) {
-               console.log('Error Inserting New Data');
-               if(err.name == 'UserExistsError') {
-               req.flash('registerMessage', 'Registration Error: User Already Exists!');
-               }
-               return res.render('register', {
-                    title: 'Register',
-                    messages: req.flash('registerMessage'),
-                    displayName: req.user ? req.user.displayName : ''
-                });
-           }
-           // if registration is successful
-           return passport.authenticate('local')(req, res, ()=>{
-              res.redirect('/dashboard'); 
-           });
-       });
+
+  // attempt to register user
+  User.register(new User(
+  { 
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    phone: req.body.phone,
+    username: req.body.username,
+    displayName: req.body.displayName,
+    password: req.body.password,
+    email: req.body.email
+  }), req.body.password, (err) => 
+    if(err) {
+      console.log('Error Inserting New Data');
+      if(err.name == 'UserExistsError') {
+      req.flash('registerMessage', 'Registration Error: User Already Exists!');
+    }
+    return res.render('register', {
+      title: 'Register',
+      messages: req.flash('registerMessage'),
+      displayName: req.user ? req.user.displayName : ''
+    });
+    }
+    // if registration is successful
+    return passport.authenticate('local')(req, res, ()=>{
+      res.redirect('/dashboard'); 
+    });
+  });
 });
 
 /* Process Logout Request */
