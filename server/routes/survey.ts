@@ -93,8 +93,9 @@ router.post('/:id', (req: express.Request, res: express.Response, next: any) => 
     // create and populate an survey object
     var survey = new Survey({
         _id: id,
-        title: req.body.title,
-        content: req.body.content
+        surveyTitle: req.body.surveyTitle,
+        surveyContent: req.body.surveyContent,
+        idName: req.body.idName
     });
 
     // run the update using mongoose and our model
