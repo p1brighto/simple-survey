@@ -1,182 +1,165 @@
 "use strict";
 var mongoose = require('mongoose');
-var surveySchema = new mongoose.Schema({
+var answerSchema = new mongoose.Schema({
     surveyTitle: {
         type: String,
         default: '',
         trim: true,
         required: 'Survey Title is required'
     },
-    surveyType: {
-        type: String,
-        default: '',
-        trim: true,
-        required: 'Content is required'
-    },
-    lifeTime: {
-        type: Date
-    },
     isActive: {
         type: Boolean,
         default: true
     },
-    Ques1: {
+    Ans1: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your Question.'
     },
-    Ques1Opt1: {
+    Ans1Opt1: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques1Opt2: {
+    Ans1Opt2: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques1Opt3: {
+    Ans1Opt3: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques1Opt4: {
+    Ans1Opt4: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques2: {
+    Ans2: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your Question.'
     },
-    Ques2Opt1: {
+    Ans2Opt1: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques2Opt2: {
+    Ans2Opt2: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques2Opt3: {
+    Ans2Opt3: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques2Opt4: {
+    Ans2Opt4: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques3: {
+    Ans3: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your Question.'
     },
-    Ques3Opt1: {
+    Ans3Opt1: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques3Opt2: {
+    Ans3Opt2: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques3Opt3: {
+    Ans3Opt3: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques3Opt4: {
+    Ans3Opt4: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques4: {
+    Ans4: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your Question.'
     },
-    Ques4Opt1: {
+    Ans4Opt1: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques4Opt2: {
+    Ans4Opt2: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques4Opt3: {
+    Ans4Opt3: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques4Opt4: {
+    Ans4Opt4: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques5: {
+    Ans5: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your Question.'
     },
-    Ques5Opt1: {
+    Ans5Opt1: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques5Opt2: {
+    Ans5Opt2: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques5Opt3: {
+    Ans5Opt3: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
     },
-    Ques5Opt4: {
+    Ans5Opt4: {
         type: String,
         default: '',
         trim: true,
         required: 'Please enter your option.'
-    },
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    updated: {
-        type: Date,
-        default: Date.now
     },
     idName: {
         type: String,
@@ -185,6 +168,6 @@ var surveySchema = new mongoose.Schema({
         required: 'Display name is required'
     }
 }, { collection: 'surveyInfo' });
-exports.Survey = mongoose.model('Survey', surveySchema);
+exports.Survey = mongoose.model('Survey', answerSchema);
 
-//# sourceMappingURL=survey.js.map
+//# sourceMappingURL=answers.js.map
