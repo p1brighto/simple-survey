@@ -6,27 +6,22 @@
             <h1>Edit User</h1>
             <form method="post">
                 <fieldset class="form-group">
-                    <label for="username">Username: *</label>
-                    <input name="username" class="form-control" required value="<%= user.username %>" />
+                    <label for="surveyTitle">Survey Title: *</label>
+                    <input name="surveyTitle" class="form-control" required value="<%= survey.surveyTitle %>" />
                 </fieldset>
                 <fieldset class="form-group">
-                    <label for="password">Password: *</label>
-                    <input name="password" class="form-control"  required value="<%= user.password %>" />
+                    <label for="surveyContent">Survey Content: *</label>
+                    <input name="surveyContent" class="form-control"  required value="<%= survey.surveyContent %>" />
                 </fieldset>
                 <fieldset class="form-group">
-                    <label for="email">Email: *</label>
-                    <input name="email" class="form-control"  required value="<%= user.email %>" />
-                </fieldset>
-                <fieldset class="form-group">
-                    <label for="displayName">Display Name: *</label>
-                    <input name="displayName" class="form-control"  required value="<%= user.displayName %>" />
+                    <input name="idName"  class="form-control"  required value="<%= survey.idName %>" />
                 </fieldset>
                 <fieldset class="form-group text-right">
                     <button type="submit" class="btn btn-success">Submit</button>
-                    <a href="/users/delete/<%= user._id %>" title="Delete" onclick="return confirm('Are you sure you want to delete this?');">
+                    <a href="/surveys/delete/<%= survey._id %>" title="Delete" onclick="return confirm('Are you sure you want to delete this?');">
                         <button type="button" class="btn btn-danger">Delete</button>
                     </a>
-                    <a href="/users">
+                    <a href="/surveys">
                         <input type="button" class="btn btn-warning" value="Cancel"/>
                     </a>
                 </fieldset>
