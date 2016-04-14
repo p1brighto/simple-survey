@@ -14,14 +14,14 @@
                     <input name="surveyContent" class="form-control"  required value="<%= survey.surveyContent %>" />
                 </fieldset>
                 <fieldset class="form-group">
-                    <input name="idName"  class="form-control"  required value="<%= survey.idName %>" />
+                    <input name="idName" type="hidden" class="form-control"  required value="<%= survey.idName %>" />
                 </fieldset>
                 <fieldset class="form-group text-right">
                     <button type="submit" class="btn btn-success">Submit</button>
-                    <a href="/surveys/delete/<%= survey._id %>" title="Delete" onclick="return confirm('Are you sure you want to delete this?');">
+                    <a href="/survey/delete/<%= survey._id %>" title="Delete" onclick="return confirm('Are you sure you want to delete this?');">
                         <button type="button" class="btn btn-danger">Delete</button>
                     </a>
-                    <a href="/surveys">
+                    <a href="/survey">
                         <input type="button" class="btn btn-warning" value="Cancel"/>
                     </a>
                 </fieldset>

@@ -56,7 +56,7 @@ router.post('/add', function (req, res, next) {
 // GET edit page - show the current survey in the form
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
-    Survey.findById(id, function (error, Survey) {
+    Survey.findById(id, function (error, survey) {
         if (error) {
             console.log(error);
             res.end(error);
@@ -65,7 +65,7 @@ router.get('/:id', function (req, res, next) {
             //show the edit view
             res.render('survey/edit', {
                 title: 'Survey Details',
-                survey: Survey,
+                survey: survey,
                 displayName: req.user ? req.user.displayName : ''
             });
         }
@@ -78,8 +78,9 @@ router.post('/:id', function (req, res, next) {
     // create and populate an survey object
     var survey = new Survey({
         _id: id,
-        title: req.body.title,
-        content: req.body.content
+        surveyTitle: req.body.surveyTitle,
+        surveyContent: req.body.surveyContent,
+        idName: req.body.idName
     });
     // run the update using mongoose and our model
     Survey.update({ _id: id }, survey, function (error) {

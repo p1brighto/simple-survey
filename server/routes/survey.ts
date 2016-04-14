@@ -68,7 +68,7 @@ router.get('/:id', (req: express.Request, res: express.Response, next: any) => {
 
     var id = req.params.id;
 
-    Survey.findById(id, (error, Survey) => {
+    Survey.findById(id, (error, survey) => {
         if (error) {
             console.log(error);
             res.end(error);
@@ -77,7 +77,7 @@ router.get('/:id', (req: express.Request, res: express.Response, next: any) => {
             //show the edit view
             res.render('survey/edit', {
                 title: 'Survey Details',
-                survey: Survey,
+                survey: survey,
                 displayName: req.user ? req.user.displayName : ''
             });
         }
