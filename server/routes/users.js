@@ -50,7 +50,7 @@ router.post('/add', requireAuth, function (req, res, next) {
             res.end(error);
         }
         else {
-            res.redirect('/users');
+            res.redirect('/dashboard');
         }
     });
 });
@@ -80,9 +80,12 @@ router.post('/:id', requireAuth, function (req, res, next) {
     var user = new User({
         _id: id,
         username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phone: req.body.phone,
         password: req.body.password,
         email: req.body.email,
-        displayName: req.body.displayName
+        displayName: req.body.displayName,
     });
     // run the update using mongoose and our model
     User.update({ _id: id }, user, function (error) {
@@ -92,7 +95,7 @@ router.post('/:id', requireAuth, function (req, res, next) {
         }
         else {
             // if update is successful redirect to the users page
-            res.redirect('/users');
+            res.redirect('/users/profile');
         }
     });
 });

@@ -59,7 +59,7 @@ router.post('/add', requireAuth, (req: express.Request, res: express.Response, n
             res.end(error);
         }
         else {
-            res.redirect('/users');
+            res.redirect('/dashboard');
         }
     })
 });
@@ -95,9 +95,13 @@ router.post('/:id', requireAuth, (req: express.Request, res: express.Response, n
     var user = new User({
         _id: id,
         username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phone: req.body.phone,
         password: req.body.password,
         email: req.body.email,
-        displayName: req.body.displayName
+        displayName: req.body.displayName,
+
     });
     
     
@@ -110,7 +114,7 @@ router.post('/:id', requireAuth, (req: express.Request, res: express.Response, n
         }
         else {
             // if update is successful redirect to the users page
-            res.redirect('/users');
+            res.redirect('/users/profile');
         }
     });
 });
