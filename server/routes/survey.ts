@@ -21,16 +21,16 @@ function requireAuth(req:express.Request, res:express.Response, next: any) {
 router.get('/',requireAuth, (req: express.Request, res: express.Response, next: any) => {
 
     // use the Survey model to query the Surveys collection
-    Survey.find(function(error, surveys) {
+    Survey.find(function(error, survey) {
         if (error) {
             console.log(error);
             res.end(error);
-        }
+        } 
         else {
             // no error, we found a list of surveys
             res.render('survey/index', {
                 title: 'Survey',
-                surveys: surveys,
+                survey: survey,
                 displayName: req.user ? req.user.displayName : ''
             });
         }
@@ -38,17 +38,19 @@ router.get('/',requireAuth, (req: express.Request, res: express.Response, next: 
 });
 
 // GET add page - show the blank form
-router.get('/add', function(req: express.Request, res: express.Response, next: any) {
+router.get('/add',requireAuth,function(req: express.Request, res: express.Response, next: any) {
     res.render('survey/add', {
-        title: 'Add a New Survey'
+        title: 'Add a New Survey',
+        displayName: req.user ? req.user.displayName : ''
     });
 });
 
 // POST add page - save the new survey
 router.post('/add', function(req: express.Request, res: express.Response, next: any) {
     Survey.create({
-        title: req.body.title,
-        content: req.body.content
+        surveyTitle: req.body.surveyTitle,
+        surveyContent: req.body.surveyContent,
+        idName: req.body.idName
     }, function(error, Survey) {
         // did we get back an error or valid Survey object?
         if (error) {

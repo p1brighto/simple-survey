@@ -22,6 +22,12 @@ var surveySchema = new mongoose.Schema({
     updated: {
         type: Date,
         default: Date.now
+    },
+    idName:{
+        type: String,
+        default: '',
+        trim: true,
+        required: 'Dspaly name is required'
     }
 },
 { collection: 'surveyInfo' });

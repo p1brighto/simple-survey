@@ -29,19 +29,26 @@
               <tr>
                 <th>#</th>
                 <th>Survey Title</th>
+                <th>Survey Content</th>
                 <th>Date Created</th>
-                <th>Username</th>
+                <th>Date updated</th>
               </tr>
             </thead>
 
             <tbody>
+               <% for (var i = 0; i < survey.length; i++) {
+               if(survey[i].displayName == displayName) {%>  
               <tr>
                 <th scope="row">1</th>
-                <td></td>
-                <td></td>
-                <td>@</td>
+                
+                <td><%= survey[i].surveyTitle %></td>
+                <td><%= survey[i].surveyContent %></td>
+                <td><%= survey[i].created %></td>
+                <td><%= survey[i].updated %></td>                
               </tr>
+              <%}}%> 
             </tbody> 
+            
           </table>
         </div>
       </div>
