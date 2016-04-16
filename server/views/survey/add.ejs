@@ -1,30 +1,62 @@
 <% include ../partials/header.ejs %>
 <% include ../partials/navbar.ejs %>
-<main class="container">
-    <div class="row">
-        <div class="col-md-offset-4 col-md-4">
-            <h1>Add a new User</h1>
-            <form method="post">
-                <fieldset class="form-group">
-                    <label for="surveyTitle">Survey Title: *</label>
-                    <input type="text" name="surveyTitle" class="form-control"  required />
-                </fieldset>
-                <fieldset class="form-group">
-                    <label for="surveyContent">surveyContent: *</label>
-                    <input type="text" name="surveyContent" class="form-control"  required />
-                </fieldset>
-                <fieldset class="form-group">
-                    <input type="hidden" name="idName" value="<%=displayName %>" class="form-control"  required />
-                </fieldset>
-                <fieldset class="form-group text-right">
-                    <button type="submit" class="btn btn-success">Submit</button>
-                    <a href="/survey">
-                    <input type="button" class="btn btn-warning" value="Cancel"/>
-                    </a>
-                </fieldset>
-            </form>
+
+  <section id="top-banner" class="section bg-intro intro-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 page-title">
+          <h2>Add a new survey </h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+      <div class="container">
+          <div class="row">
+             <div class="col-md-8 col-md-offset-2">
+                <form method="post" class="login-form">
+                    <fieldset class="form-group">
+                        <label for="surveyTitle">Survey Title: *</label>
+                        <input type="text" name="surveyTitle" class="form-control"  required />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="surveyContent">Question 1 : </label>
+                        <input type="text" name="Ques1" class="form-control"  required />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="surveyContent">Question 2 : </label>
+                        <input type="text" name="Ques2" class="form-control"  required />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="surveyContent">Question 3 : </label>
+                        <input type="text" name="Ques3" class="form-control"  required />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="surveyContent">Question 4 : </label>
+                        <input type="text" name="Ques4" class="form-control"  required />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="surveyContent">Question 5 : </label>
+                        <input type="text" name="Ques5" class="form-control"  required />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <input type="hidden" name="idName" value="<%=displayName %>" class="form-control"  required />
+                    </fieldset>
+                    <fieldset class="form-group text-right row">
+                        <div class="col-md-6">
+                          <input type="submit" class="btn btn-success" value="Save Survey" /> 
+                        </div>
+                        <div class="col-md-6">
+                            <a href="/survey">
+                                <input type="button" class="btn btn-del" value="Cancel"/>
+                            </a>                            
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>
+</section>
 
-</main>
 <% include ../partials/footer.ejs %>

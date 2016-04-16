@@ -53,7 +53,6 @@ app.use(passport.session());
 
 // Initialize Flash Messages
 app.use(flash());
-
 app.use(express.static(path.join(__dirname, '../public')));
 
 // passport config

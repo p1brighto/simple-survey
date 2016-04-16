@@ -16,16 +16,29 @@
           <div class="row">
              <div class="col-md-8 col-md-offset-2">
                 <form method="post" class="login-form">
-                    <fieldset class="form-group">
+                <fieldset class="form-group">
                         <label for="surveyTitle">Survey Title: *</label>
-                        <input name="surveyTitle" class="form-control" required value="<%= survey.surveyTitle %>" />
+                        <input type="text" name="surveyTitle" class="form-control"  required />
                     </fieldset>
                     <fieldset class="form-group">
-                        <label for="surveyContent">Survey Content: *</label>
-                        <input name="surveyContent" class="form-control"  required value="<%= survey.surveyContent %>" />
+                        <label for="surveyContent">Question 1 : </label>
+                        <input type="text" name="Ques1" class="form-control"  required />
                     </fieldset>
                     <fieldset class="form-group">
-                        <input name="idName" type="hidden" class="form-control"  required value="<%= survey.idName %>" />
+                        <label for="surveyContent">Question 2 : </label>
+                        <input type="text" name="Ques2" class="form-control"  required />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="surveyContent">Question 3 : </label>
+                        <input type="text" name="Ques3" class="form-control"  required />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="surveyContent">Question 4 : </label>
+                        <input type="text" name="Ques4" class="form-control"  required />
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="surveyContent">Question 5 : </label>
+                        <input type="text" name="Ques5" class="form-control"  required />
                     </fieldset>
                     <fieldset class="form-group text-right row">
                         <div class="col-md-4">
@@ -33,7 +46,7 @@
                         </div>
                         <div class="col-md-4">
                             <a href="/survey">
-                                <input type="button" class="btn btn-warning" value="Cancel"/>
+                                <input type="button" class="btn btn-de" value="Cancel"/>
                             </a>                            
                         </div>
                         <div class="col-md-4">

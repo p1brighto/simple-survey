@@ -1,6 +1,6 @@
 {
   "name": "simple-survey",
-  "description": "A simple survey app using MEAN stack using passportjs for authentication.": "",
+  "description": "A simple survey app using MEAN stack using passportjs for authentication.",
   "authors": [
     "simplesphere"
   ],
@@ -11,7 +11,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "./public/Scripts/lib",
+    "./public/scripts/lib",
     "test",
     "tests"
   ],

@@ -107,7 +107,12 @@ Buttons
 
 .btn-blue:hover {background-color: #1a1a1a; color: #FFF;}
 
-.btn-black {background: #030303!important; border-color: #000;}
+.btn-del { font-size: 14px; font-family: "Montserrat", sans-serif; letter-spacing: 1px; padding: 15px 30px; background: #A94442!important; border: 2px solid #A94442!important; color: #FFF; font-weight: bold; border-radius: 0; text-transform: uppercase;}
+.btn-del:hover {background-color: #1a1a1a; color: #FFF;}
+
+.btn-black { font-size: 14px; font-family: "Montserrat", sans-serif; letter-spacing: 1px; padding: 15px 30px; background: #1a1a1a!important; border: 2px solid #1a1a1a!important; color: #FFF; font-weight: bold; border-radius: 0; text-transform: uppercase;}
+.btn-black:hover {background-color: #1a1a1a; color: #FFF;}
+
 .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active {background-color: #000; color: #FFF; border-color: rgba(0,0,0,0.7);}
 
 /* ==========================================================================
