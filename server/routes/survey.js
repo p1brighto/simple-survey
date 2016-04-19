@@ -40,8 +40,13 @@ router.get('/add', requireAuth, function (req, res, next) {
 router.post('/add', function (req, res, next) {
     Survey.create({
         surveyTitle: req.body.surveyTitle,
-        surveyContent: req.body.surveyContent,
-        idName: req.body.idName
+        SurveyType: req.body.surveyType,
+        shortQuest1: req.body.shortQuest1,
+        shortQuest2: req.body.shortQuest2,
+        shortQuest3: req.body.shortQuest3,
+        shortQuest4: req.body.shortQuest4,
+        shortQuest5: req.body.shortQuest5,
+        displayName: req.body.displayName
     }, function (error, Survey) {
         // did we get back an error or valid Survey object?
         if (error) {

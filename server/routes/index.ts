@@ -56,11 +56,6 @@ router.get('/dashboard', (req: express.Request, res: express.Response, next: any
       });
     }
   });
-
-/*  res.render('dashboard', {
-    title: 'Dashboard',
-    displayName: req.user ? req.user.displayName : ''});*/
-  
 });
 
 /* GET contact page. */

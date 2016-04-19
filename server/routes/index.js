@@ -49,9 +49,6 @@ router.get('/dashboard', function (req, res, next) {
             });
         }
     });
-    /*  res.render('dashboard', {
-        title: 'Dashboard',
-        displayName: req.user ? req.user.displayName : ''});*/
 });
 /* GET contact page. */
 router.get('/contact-us', function (req, res, next) {
