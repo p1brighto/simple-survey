@@ -29,15 +29,22 @@ router.get('/', requireAuth, function (req, res, next) {
         }
     });
 });
-// GET add page - show the blank form
+// Show page with survey options to create
 router.get('/add', requireAuth, function (req, res, next) {
     res.render('survey/add', {
-        title: 'Add a New Survey',
+        title: 'Choose your type of survey',
+        displayName: req.user ? req.user.displayName : ''
+    });
+});
+// GET add page - show the blank form
+router.get('/shortquestions-add', requireAuth, function (req, res, next) {
+    res.render('survey/shortquestions-add', {
+        title: 'Add Short Questions',
         displayName: req.user ? req.user.displayName : ''
     });
 });
 // POST add page - save the new survey
-router.post('/add', function (req, res, next) {
+router.post('/shortquestions-add', function (req, res, next) {
     Survey.create({
         surveyTitle: req.body.surveyTitle,
         SurveyType: req.body.surveyType,
@@ -54,7 +61,7 @@ router.post('/add', function (req, res, next) {
             res.end(error);
         }
         else {
-            res.redirect('/survey');
+            res.redirect('/dashboard');
         }
     });
 });

@@ -8,12 +8,12 @@ var surveySchema = new mongoose.Schema({
     shortQuest3: String,
     shortQuest4: String,
     shortQuest5: String,
-    lifeTime: Date,
+    activeTill: Date,
     isActive: Boolean,
     dateCreated: Date,
     dateUpdated: Date,
     displayName: String
-}, { collection: 'surveySchema' });
+}, { collection: 'surveyCollection' });
 exports.Survey = mongoose.model('Survey', surveySchema);
 
 //# sourceMappingURL=survey.js.map

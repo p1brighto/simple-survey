@@ -20,33 +20,41 @@ function requireAuth(req:express.Request, res:express.Response, next: any) {
 // GET - show main survey page
 router.get('/',requireAuth, (req: express.Request, res: express.Response, next: any) => {
 
-    // use the Survey model to query the Surveys collection
-    Survey.find(function(error, survey) {
-      if (error) {
-        console.log(error);
-        res.end(error);
-      } 
-      else {
-            // no error, we found a list of surveys
-            res.render('survey/index', {
-              title: 'Survey',
-              survey: survey,
-              displayName: req.user ? req.user.displayName : ''
-            });
-          }
-        });
+  // use the Survey model to query the Surveys collection
+  Survey.find(function(error, survey) {
+    if (error) {
+      console.log(error);
+      res.end(error);
+    } 
+    else {
+          // no error, we found a list of surveys
+          res.render('survey/index', {
+            title: 'Survey',
+            survey: survey,
+            displayName: req.user ? req.user.displayName : ''
+          });
+        }
+      });
+});
+
+// Show page with survey options to create
+router.get('/add', requireAuth, function(req: express.Request, res: express.Response, next: any) {
+  res.render('survey/add', {
+    title: 'Choose your type of survey',
+    displayName: req.user ? req.user.displayName : ''
   });
+});
 
 // GET add page - show the blank form
-router.get('/add',requireAuth,function(req: express.Request, res: express.Response, next: any) {
-  res.render('survey/add', {
-    title: 'Add a New Survey',
+router.get('/shortquestions-add', requireAuth, function(req: express.Request, res: express.Response, next: any) {
+  res.render('survey/shortquestions-add', {
+    title: 'Add Short Questions',
     displayName: req.user ? req.user.displayName : ''
   });
 });
 
 // POST add page - save the new survey
-router.post('/add', function(req: express.Request, res: express.Response, next: any) {
+router.post('/shortquestions-add', function(req: express.Request, res: express.Response, next: any) {
   Survey.create({
     surveyTitle: req.body.surveyTitle,
     SurveyType: req.body.surveyType,
@@ -63,10 +71,11 @@ router.post('/add', function(req: express.Request, res: express.Response, next: 
       res.end(error);
     }
     else {
-      res.redirect('/survey');
+      res.redirect('/dashboard');
     }
   })
 });
+
 
 // GET edit page - show the current survey in the form
 router.get('/:id', (req: express.Request, res: express.Response, next: any) => {

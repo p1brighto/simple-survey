@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 page-title">
-          <h2>Add a New Survey</h2>
+          <h2>Choose Your Survey Type</h2>
         </div>
       </div>
     </div>
@@ -26,60 +26,18 @@
           </div>
         </div>
         <div class="col-md-9">
-          <form method="post" class="login-form">
-            <fieldset class="form-group">
-              <label for="surveyTitle">Survey Title</label>
-              <input type="text" name="surveyTitle" class="form-control"  required />
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="surveyContent">Enter your first question</label>
-              <input type="text" name="shortQuest1" class="form-control"  required />
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="surveyContent">Enter your second question</label>
-              <input type="text" name="shortQuest2" class="form-control"  required />
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="surveyContent">Enter your third question</label>
-              <input type="text" name="shortQuest3" class="form-control"  required />
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="surveyContent">Enter your forth question</label>
-              <input type="text" name="shortQuest4" class="form-control"  required />
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="surveyContent">Enter your fifth question</label>
-              <input type="text" name="shortQuest5" class="form-control"  required />
-            </fieldset>
-            <fieldset class="form-group row">
-              <div class="col-md-6">
-                <label for="surveyContent">Active till : </label>
-                <input type="date" name="dateCreated" id="dateCreated" class="pull-left">
-              </div>
-              <div class="col-md-6">
-                <label for="surveyContent">Status</label>
-                  <div class="radio">
-                    <label><input type="radio" name="statusActive">Active</label>
-                  </div>
-                  <div class="radio">
-                    <label><input type="radio" name="statusNotActive">Inactive</label>
-                  </div>
-              </div>
-            </fieldset>
-            <fieldset class="form-group">
-              <input type="hidden" name="displayName" value="<%= displayName %>" class="form-control"  required />
-            </fieldset>
-            <fieldset class="form-group text-right row">
-              <div class="col-md-6">
-                <input type="submit" class="btn btn-success" value="Save Survey" /> 
-              </div>
-              <div class="col-md-6">
-                <a href="/survey">
-                  <input type="button" class="btn btn-del" value="Cancel"/>
-                </a>                            
-              </div>
-            </fieldset>
-          </form>
+          <div class="row">
+            <div class="col-md-6 surveytype">
+              <i class="ion-document-text"></i>
+              <h4>Create a survey with multiple choice questions</h4>
+              <a href="/survey/shortquestions-add" class="btn btn-blue">Get Started</a>
+            </div>
+            <div class="col-md-6 surveytype">
+              <i class="ion-document-text"></i>
+              <h4>Create a survey with multiple choice questions</h4>
+              <a href="survey/multiplechoice-add" class="btn btn-blue">Get Started</a>
+            </div>
+          </div>
         </div>
 
       </div>
