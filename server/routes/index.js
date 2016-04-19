@@ -6,6 +6,8 @@ var router = express.Router();
 // db references
 var userModel = require('../models/user');
 var User = userModel.User;
+var surveyModel = require('../models/survey');
+var Survey = surveyModel.Survey;
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {
@@ -32,9 +34,24 @@ router.get('/survey-results', function (req, res, next) {
 });
 /* GET Dashboard */
 router.get('/dashboard', function (req, res, next) {
-    res.render('dashboard', {
+    // use the Survey model to query the Surveys collection
+    Survey.find(function (error, survey) {
+        if (error) {
+            console.log(error);
+            res.end(error);
+        }
+        else {
+            // no error, we found a list of surveys
+            res.render('dashboard', {
+                title: 'Dashboard',
+                survey: survey,
+                displayName: req.user ? req.user.displayName : ''
+            });
+        }
+    });
+    /*  res.render('dashboard', {
         title: 'Dashboard',
-        displayName: req.user ? req.user.displayName : '' });
+        displayName: req.user ? req.user.displayName : ''});*/
 });
 /* GET contact page. */
 router.get('/contact-us', function (req, res, next) {

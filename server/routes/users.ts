@@ -4,9 +4,10 @@ var router = express.Router();
 
 // db references
 import mongoose = require('mongoose');
-import userModel = require('../models/user');
 
+import userModel = require('../models/user');
 import User = userModel.User;
+
 
 /* Utility Function to check if user is authenticated */
 function requireAuth(req:express.Request, res:express.Response, next: any) {
@@ -34,6 +35,7 @@ router.get('/profile', requireAuth, (req: express.Request, res: express.Response
                 displayName: req.user ? req.user.displayName : ''
             });
         }
+
     });
 });
 
