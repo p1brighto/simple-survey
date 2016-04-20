@@ -17,19 +17,13 @@ router.get('/', function (req, res, next) {
 /* GET about page. */
 router.get('/about-us', function (req, res, next) {
     res.render('about-us', {
-        title: 'About Us',
+        title: 'About-Us',
         displayName: req.user ? req.user.displayName : '' });
 });
 /* GET browse surveys page. */
 router.get('/browse-surveys', function (req, res, next) {
     res.render('browse-surveys', {
         title: 'Browse-surveys',
-        displayName: req.user ? req.user.displayName : '' });
-});
-/* GET survey results page. */
-router.get('/survey-results', function (req, res, next) {
-    res.render('survey-results', {
-        title: 'Survey-results',
         displayName: req.user ? req.user.displayName : '' });
 });
 /* GET Dashboard */

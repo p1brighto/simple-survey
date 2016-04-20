@@ -130,6 +130,10 @@ Color Customizations
 .white-text h1,
 .white-text li {color: #FFF!important;}
 
+.white-text i {
+	color: rgba(255,255,255,0.6)!important;
+}
+
 /* ==========================================================================
 Backgrounds
 ========================================================================== */
@@ -583,4 +587,36 @@ Tables
 	line-height: 120px;
 	margin: 20px auto;
 	border-radius: 50%;
+}
+
+/* ==========================================================================
+Steps
+=========================================================================== */
+.steps {
+	text-align: center;
+}
+
+.steps i {
+  font-size: 54px;
+  color: #3598dc;
+  border: 1px solid #1D1D1D;
+  display: block;
+  text-align: center;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  line-height: 100px;
+  margin: 20px auto;
+}
+
+.steps h4 {
+	font-size: 20px;
+}
+
+.steps h5 {
+	color: #555;
+}
+
+.steps h5:after {
+	content: none;
 }

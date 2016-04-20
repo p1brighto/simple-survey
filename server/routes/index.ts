@@ -21,7 +21,7 @@ router.get('/', (req: express.Request, res: express.Response, next: any) => {
 /* GET about page. */
 router.get('/about-us', (req: express.Request, res: express.Response, next: any) => {
   res.render('about-us', { 
-    title: 'About Us',
+    title: 'About-Us',
     displayName: req.user ? req.user.displayName : '' });
 });
 
@@ -29,13 +29,6 @@ router.get('/about-us', (req: express.Request, res: express.Response, next: any)
 router.get('/browse-surveys', (req: express.Request, res: express.Response, next: any) => {
   res.render('browse-surveys', { 
     title: 'Browse-surveys',
-    displayName: req.user ? req.user.displayName : '' });
-});
-
-/* GET survey results page. */
-router.get('/survey-results', (req: express.Request, res: express.Response, next: any) => {
-  res.render('survey-results', { 
-    title: 'Survey-results',
     displayName: req.user ? req.user.displayName : '' });
 });
 
