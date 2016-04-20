@@ -19,7 +19,6 @@ function requireAuth(req:express.Request, res:express.Response, next: any) {
 
 // GET - show main survey page
 router.get('/',requireAuth, (req: express.Request, res: express.Response, next: any) => {
-
   // use the Survey model to query the Surveys collection
   Survey.find(function(error, survey) {
     if (error) {
@@ -27,15 +26,23 @@ router.get('/',requireAuth, (req: express.Request, res: express.Response, next: 
       res.end(error);
     } 
     else {
-          // no error, we found a list of surveys
-          res.render('survey/index', {
-            title: 'Survey',
-            survey: survey,
-            displayName: req.user ? req.user.displayName : ''
-          });
-        }
+      // no error, we found a list of surveys
+      res.render('survey/index', {
+        title: 'Survey',
+        survey: survey,
+        displayName: req.user ? req.user.displayName : ''
       });
+    }
+  });
 });
+
+/* GET browse surveys page. */
+/*router.get('/browse-surveys', (req: express.Request, res: express.Response, next: any) => {
+  res.render('browse-surveys', {
+    title: 'Browse-surveys',
+    displayName: req.user ? req.user.displayName : ''
+  });
+});*/
 
 // Show page with survey options to create
 router.get('/add', requireAuth, function(req: express.Request, res: express.Response, next: any) {

@@ -1,44 +1,44 @@
 <% include partials/header.ejs %>
 <% include partials/navbar.ejs %>
 
-  <section id="top-banner" class="section bg-intro intro-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 page-title">
-          <h2>Browse Surveys</h2>
-        </div>
+<section id="top-banner" class="section bg-intro intro-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 page-title">
+        <h2>Browse Surveys</h2>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="main-content" class="section">
-    <div class="container">
-      <div class="row">
+<section id="main-content" class="section">
+  <div class="container">
+    <div class="row">
 
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th class="col-md-1">#</th>
-                <th class="col-md-5">Survey Title</th>
-                <th class="col-md-2">Date Created</th>
-                <th class="col-md-2">Author</th>
-                <th class="col-md-2">Participate</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% for (var i = 0; i < survey.length; i++) { %>  
-              <tr>
-                <td class="col-md-1"><%= i %></td>
-                <td class="col-md-5"><%= survey[i].surveyTitle %></td>
-                <td class="col-md-2"><%= survey[i].created %></td>
-                <td class="col-md-2"><%= survey[i].displayName %></td>
-                <td class="col-md-2"><a href="/survey/<%= survey[i]._id %>" class="btn-dash"><i class="ion-document-text"></i> Participate</a></td>
-              </tr>
-              <% } %>
-            </tbody>
-          </table> 
-      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="col-md-1">#</th>
+            <th class="col-md-5">Survey Title</th>
+            <th class="col-md-2">Date Created</th>
+            <th class="col-md-2">Author</th>
+            <th class="col-md-2">Participate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var i = 0; i < survey.length; i++) { %>  
+          <tr>
+            <td class="col-md-1"><%= i %></td>
+            <td class="col-md-5"><%= survey[i].surveyTitle %></td>
+            <td class="col-md-2"><%= survey[i].created %></td>
+            <td class="col-md-2"><%= survey[i].displayName %></td>
+            <td class="col-md-2"><a href="/survey/<%= survey[i]._id %>" class="btn-dash"><i class="ion-android-done"></i> Participate</a></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table> 
     </div>
-  </section>
+  </div>
+</section>
 
 <% include partials/footer.ejs %>

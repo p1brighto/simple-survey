@@ -21,15 +21,27 @@ router.get('/', (req: express.Request, res: express.Response, next: any) => {
 /* GET about page. */
 router.get('/about-us', (req: express.Request, res: express.Response, next: any) => {
   res.render('about-us', { 
-    title: 'About-Us',
+    title: 'About-us',
     displayName: req.user ? req.user.displayName : '' });
 });
 
-/* GET browse surveys page. */
+// Show surveys
 router.get('/browse-surveys', (req: express.Request, res: express.Response, next: any) => {
-  res.render('browse-surveys', { 
-    title: 'Browse-surveys',
-    displayName: req.user ? req.user.displayName : '' });
+  // use the Survey model to query the Surveys collection
+  Survey.find(function(error, survey) {
+    if (error) {
+      console.log(error);
+      res.end(error);
+    }
+    else {
+      // no error, we found a list of surveys
+      res.render('browse-surveys', {
+        title: 'Browse-surveys',
+        survey: survey,
+        displayName: req.user ? req.user.displayName : ''
+      });
+    }
+  });
 });
 
 /* GET Dashboard */

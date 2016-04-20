@@ -29,6 +29,13 @@ router.get('/', requireAuth, function (req, res, next) {
         }
     });
 });
+/* GET browse surveys page. */
+/*router.get('/browse-surveys', (req: express.Request, res: express.Response, next: any) => {
+  res.render('browse-surveys', {
+    title: 'Browse-surveys',
+    displayName: req.user ? req.user.displayName : ''
+  });
+});*/
 // Show page with survey options to create
 router.get('/add', requireAuth, function (req, res, next) {
     res.render('survey/add', {

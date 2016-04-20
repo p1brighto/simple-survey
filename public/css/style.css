@@ -73,6 +73,7 @@ Classes
 ========================================================================== */ 
 .section {padding: 80px 0; position: relative;}
 
+.hidden {display: none;}
 .margintop-10 {margin-top: 10px;}
 
 .paddingbottom-60 {padding-bottom: 60px;}
@@ -298,50 +299,50 @@ Intro
 .full-height {height: 100vh;}
 
 .login-form {
-    padding: 30px;
-    background: #f8f8f8;
-    border: 1px solid rgba(0,0,0,0.1);
+  padding: 30px;
+  background: #f8f8f8;
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
 .page-title h2 {
-    text-align: left;
-    color: #FFF;
-    font-size: 36px;
+  text-align: left;
+  color: #FFF;
+  font-size: 36px;
 }
 
 .login-form input,
 .login-form textarea {
-    display: block;
-    padding: 10px 15px;
-    height: auto;
-    margin: 10px auto;
-    border-radius: 0;
-    font-size: 14px;
+  display: block;
+  padding: 10px 15px;
+  height: auto;
+  margin: 10px auto;
+  border-radius: 0;
+  font-size: 14px;
 }
 
 .login-form label {
-    text-transform: uppercase;
-    color: #1a1a1a;
-    display: block;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  display: block;
 }
 
 .login-form input[type="button"],
 .login-form input[type="submit"] {
-    display: block;
-    padding: 15px;
-    width: 100%;
-    background: #1a1a1a;
-    color: #FFF;
-    text-transform: uppercase;
-    border-radius: 0;
-    font-weight: bold;
-    font-size: 14px;
-    border: 2px solid #1a1a1a;
+  display: block;
+  padding: 15px;
+  width: 100%;
+  background: #1a1a1a;
+  color: #FFF;
+  text-transform: uppercase;
+  border-radius: 0;
+  font-weight: bold;
+  font-size: 14px;
+  border: 2px solid #1a1a1a;
 }
 
 .btn-login {
-    background: #3AADF4;
-    border: 2px solid #3AADF4;
+  background: #3AADF4;
+  border: 2px solid #3AADF4;
 }
 
 /* ==========================================================================
@@ -397,91 +398,7 @@ a.scroll-up i {color: #090C0F; font-size: 13px; line-height: normal;}
 a.scroll-up:hover, 
 a.scroll-up:focus { background: #000; color: #FFF;}
 a.scroll-up:hover i { color: #FFF;}
- 
 
-/* ==========================================================================
-Loader
- ========================================================================== */
-.loader{ background-color: rgba(0,0,0,0.95); height: 100%; width: 100%; position: fixed; z-index: 999; margin-top: 0px; top: 0px;}
-.loader-centered { position: absolute; left: 50%; top: 50%; height: 200px; width: 200px; margin-top: -100px; margin-left: -100px;}
-.object{ width: 50px; height: 50px; background-color: rgba(255,255,255,0); margin-right: auto; margin-left: auto; border: 4px solid #FFF; left: 73px; top: 73px; position: absolute;}
-
-.square-one {-webkit-animation: first_object_animate 1s infinite ease-in-out; animation: first_object_animate 1s infinite ease-in-out;} 
-.square-two {-webkit-animation: second_object 1s forwards, second_object_animate 1s infinite ease-in-out; animation: second_object 1s forwards, second_object_animate 1s infinite ease-in-out; }    
-.square-three {-webkit-animation: third_object 1s forwards, third_object_animate 1s infinite ease-in-out; animation: third_object 1s forwards, third_object_animate 1s infinite ease-in-out; }     
-
-@-webkit-keyframes second_object {
-    100% { width: 100px; height:100px; left: 48px; top: 48px; }
-}       
-@keyframes second_object {
-    100% { width: 100px; height:100px; left: 48px; top: 48px; }
-}
-@-webkit-keyframes third_object {
-    100% { width: 150px; height:150px; left: 23px; top: 23px;}
-}       
-@keyframes third_object {
-    100% { width: 150px; height:150px; left: 23px; top: 23px;}
-}
-
-@-webkit-keyframes first_object_animate {
-  0% { -webkit-transform: perspective(100px); }
-  50% { -webkit-transform: perspective(100px) rotateY(-180deg); }
-  100% { -webkit-transform: perspective(100px) rotateY(-180deg) rotateX(-180deg); }
-}
-
-@keyframes first_object_animate {
-    0% { 
-        transform: perspective(100px) rotateX(0deg) rotateY(0deg);
-        -webkit-transform: perspective(100px) rotateX(0deg) rotateY(0deg); 
-    } 50% { 
-        transform: perspective(100px) rotateX(-180deg) rotateY(0deg);
-        -webkit-transform: perspective(100px) rotateX(-180deg) rotateY(0deg) ;
-    } 100% { 
-        transform: perspective(100px) rotateX(-180deg) rotateY(-180deg);
-        -webkit-transform: perspective(100px) rotateX(-180deg) rotateY(-180deg);
-    }
-}
-
-@-webkit-keyframes second_object_animate {
-    0% { -webkit-transform: perspective(200px); }
-    50% { -webkit-transform: perspective(200px) rotateY(180deg); }
-    100% { -webkit-transform: perspective(200px) rotateY(180deg) rotateX(180deg); }
-}   
-
-
-@keyframes second_object_animate {
-    0% { 
-        transform: perspective(200px) rotateX(0deg) rotateY(0deg);
-        -webkit-transform: perspective(200px) rotateX(0deg) rotateY(0deg); 
-    } 50% { 
-        transform: perspective(200px) rotateX(180deg) rotateY(0deg);
-        -webkit-transform: perspective(200px) rotateX(180deg) rotateY(0deg) ;
-    } 100% { 
-        transform: perspective(200px) rotateX(180deg) rotateY(180deg);
-        -webkit-transform: perspective(200px) rotateX(180deg) rotateY(180deg);
-    }
-}
-
-@-webkit-keyframes third_object_animate {
-    0% { -webkit-transform: perspective(300px); }
-    50% { -webkit-transform: perspective(300px) rotateY(-180deg); }
-    100% { -webkit-transform: perspective(300px) rotateY(-180deg) rotateX(-180deg); }
-}
-
-@keyframes third_object_animate {
-    0% { 
-        transform: perspective(300px) rotateX(0deg) rotateY(0deg);
-        -webkit-transform: perspective(300px) rotateX(0deg) rotateY(0deg); 
-    } 50% { 
-        transform: perspective(300px) rotateX(-180deg) rotateY(0deg);
-        -webkit-transform: perspective(300px) rotateX(-180deg) rotateY(0deg) ;
-    } 100% { 
-        transform: perspective(300px) rotateX(-180deg) rotateY(-180deg);
-        -webkit-transform: perspective(300px) rotateX(-180deg) rotateY(-180deg);
-    }
-}
-
- 
 /* ==========================================================================
 Media Queries
  ========================================================================== */
@@ -594,6 +511,7 @@ Steps
 =========================================================================== */
 .steps {
 	text-align: center;
+	margin-bottom: 0;
 }
 
 .steps i {
@@ -614,7 +532,7 @@ Steps
 }
 
 .steps h5 {
-	color: #555;
+	color: #909090;
 }
 
 .steps h5:after {
