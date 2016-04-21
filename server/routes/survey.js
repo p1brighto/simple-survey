@@ -29,21 +29,21 @@ router.get('/', requireAuth, function (req, res, next) {
         }
     });
 });
-// Show page with survey options to create
+// Choose type of survey you want to create
 router.get('/add', requireAuth, function (req, res, next) {
     res.render('survey/add', {
         title: 'Choose your type of survey',
         displayName: req.user ? req.user.displayName : ''
     });
 });
-// GET add page - show the blank form
+// show add short questions page
 router.get('/shortquestions-add', requireAuth, function (req, res, next) {
     res.render('survey/shortquestions-add', {
         title: 'Add Short Questions',
         displayName: req.user ? req.user.displayName : ''
     });
 });
-// POST add page - save the new survey
+// save short questions
 router.post('/shortquestions-add', function (req, res, next) {
     Survey.create({
         surveyTitle: req.body.surveyTitle,
@@ -56,6 +56,55 @@ router.post('/shortquestions-add', function (req, res, next) {
         displayName: req.body.displayName
     }, function (error, Survey) {
         // did we get back an error or valid Survey object?
+        if (error) {
+            console.log(error);
+            res.end(error);
+        }
+        else {
+            res.redirect('/dashboard');
+        }
+    });
+});
+// Multiple Choice Questions
+// Multiple choice questions page
+router.get('/multiplechoice-add', requireAuth, function (req, res, next) {
+    res.render('survey/multiplechoice-add', {
+        title: 'Add Multiple Choice Questions',
+        displayName: req.user ? req.user.displayName : ''
+    });
+});
+// Save multiple choice questions
+router.post('/multiplechoice-add', function (req, res, next) {
+    Survey.create({
+        surveyTitle: req.body.surveyTitle,
+        SurveyType: req.body.surveyType,
+        shortQuest1: req.body.shortQuest1,
+        shortQuest2: req.body.shortQuest2,
+        shortQuest3: req.body.shortQuest3,
+        shortQuest4: req.body.shortQuest4,
+        shortQuest5: req.body.shortQuest5,
+        quest1Opt1: req.body.quest1Opt1,
+        quest1Opt2: req.body.quest1Opt2,
+        quest1Opt3: req.body.quest1Opt3,
+        quest1Opt4: req.body.quest1Opt4,
+        quest2Opt1: req.body.quest2Opt1,
+        quest2Opt2: req.body.quest2Opt2,
+        quest2Opt3: req.body.quest2Opt3,
+        quest2Opt4: req.body.quest2Opt4,
+        quest3Opt1: req.body.quest3Opt1,
+        quest3Opt2: req.body.quest3Opt2,
+        quest3Opt3: req.body.quest3Opt3,
+        quest3Opt4: req.body.quest3Opt4,
+        quest4Opt1: req.body.quest4Opt1,
+        quest4Opt2: req.body.quest4Opt2,
+        quest4Opt3: req.body.quest4Opt3,
+        quest4Opt4: req.body.quest4Opt4,
+        quest5Opt1: req.body.quest5Opt1,
+        quest5Opt2: req.body.quest5Opt2,
+        quest5Opt3: req.body.quest5Opt3,
+        quest5Opt4: req.body.quest5Opt4,
+        displayName: req.body.displayName
+    }, function (error, Survey) {
         if (error) {
             console.log(error);
             res.end(error);
