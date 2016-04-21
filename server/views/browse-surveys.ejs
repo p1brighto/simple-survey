@@ -29,8 +29,18 @@
           <% var count = 0; for (var i = 0; i < survey.length; i++) { count ++; %>  
           <tr>
             <td class="col-md-1"><%= count %></td>
-            <td class="col-md-5"><%= survey[i].surveyTitle %></td>
-            <td class="col-md-2"><%= survey[i].surveyType %></td>
+            <td class="col-md-5"><a href="/answer/<%= survey[i]._id %>" class="btn-dash"><%= survey[i].surveyTitle %></a></td>
+            <td class="col-md-2">
+             <%
+                if (survey[i].surveyType == "shortQuestion") {
+              %>
+                Short Questions
+              <%
+                } else if (survey[i].surveyType == "multipleChoiceQuestion") {
+              %>
+                Multiple Choice
+              <% } %>
+            </td>
             <td class="col-md-2"><%= survey[i].displayName %></td>
             <td class="col-md-2"><a href="/answer/<%= survey[i]._id %>" class="btn-dash"><i class="ion-android-done"></i> Participate</a></td>
           </tr>
