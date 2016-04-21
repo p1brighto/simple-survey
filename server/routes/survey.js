@@ -3,9 +3,8 @@ var express = require('express');
 var router = express.Router();
 var surveyModel = require('../models/survey');
 var Survey = surveyModel.Survey;
-/* Utility Function to check if user is authenticated */
+// Authenticate user
 function requireAuth(req, res, next) {
-    // check if the user is logged in
     if (!req.isAuthenticated()) {
         return res.redirect('/login');
     }
@@ -13,14 +12,12 @@ function requireAuth(req, res, next) {
 }
 // GET - show main survey page
 router.get('/', requireAuth, function (req, res, next) {
-    // use the Survey model to query the Surveys collection
     Survey.find(function (error, survey) {
         if (error) {
             console.log(error);
             res.end(error);
         }
         else {
-            // no error, we found a list of surveys
             res.render('survey/index', {
                 title: 'Survey',
                 survey: survey,
@@ -47,12 +44,14 @@ router.get('/shortquestions-add', requireAuth, function (req, res, next) {
 router.post('/shortquestions-add', function (req, res, next) {
     Survey.create({
         surveyTitle: req.body.surveyTitle,
-        SurveyType: req.body.surveyType,
+        surveyType: req.body.surveyType,
         shortQuest1: req.body.shortQuest1,
         shortQuest2: req.body.shortQuest2,
         shortQuest3: req.body.shortQuest3,
         shortQuest4: req.body.shortQuest4,
         shortQuest5: req.body.shortQuest5,
+        isActive: req.body.isActive,
+        activeTill: req.body.activeTill,
         displayName: req.body.displayName
     }, function (error, Survey) {
         // did we get back an error or valid Survey object?
@@ -62,6 +61,52 @@ router.post('/shortquestions-add', function (req, res, next) {
         }
         else {
             res.redirect('/dashboard');
+        }
+    });
+});
+// Display Edit Page - Short Questions
+router.get('/edit-shortquestions/:id', function (req, res, next) {
+    var id = req.params.id;
+    Survey.findById(id, function (error, survey) {
+        if (error) {
+            console.log(error);
+            res.end(error);
+        }
+        else {
+            res.render('survey/edit-shortquestions', {
+                title: 'Edit Short Questions',
+                survey: survey,
+                displayName: req.user ? req.user.displayName : ''
+            });
+        }
+    });
+});
+// Post Edits - Short Questions
+router.post('/edit-shortquestions/:id', function (req, res, next) {
+    // grab the id from the url parameter
+    var id = req.params.id;
+    // create and populate an survey object
+    var survey = new Survey({
+        _id: id,
+        surveyTitle: req.body.surveyTitle,
+        surveyType: req.body.surveyType,
+        shortQuest1: req.body.shortQuest1,
+        shortQuest2: req.body.shortQuest2,
+        shortQuest3: req.body.shortQuest3,
+        shortQuest4: req.body.shortQuest4,
+        shortQuest5: req.body.shortQuest5,
+        isActive: req.body.isActive,
+        activeTill: req.body.activeTill,
+        displayName: req.body.displayName
+    });
+    // run the update using mongoose and our model
+    Survey.update({ _id: id }, survey, function (error) {
+        if (error) {
+            console.log(error);
+            res.end(error);
+        }
+        else {
+            res.redirect('/survey');
         }
     });
 });
@@ -77,7 +122,7 @@ router.get('/multiplechoice-add', requireAuth, function (req, res, next) {
 router.post('/multiplechoice-add', function (req, res, next) {
     Survey.create({
         surveyTitle: req.body.surveyTitle,
-        SurveyType: req.body.surveyType,
+        surveyType: req.body.surveyType,
         shortQuest1: req.body.shortQuest1,
         shortQuest2: req.body.shortQuest2,
         shortQuest3: req.body.shortQuest3,
@@ -114,8 +159,8 @@ router.post('/multiplechoice-add', function (req, res, next) {
         }
     });
 });
-// GET edit page - show the current survey in the form
-router.get('/:id', function (req, res, next) {
+// Display Edit Page - Short Questions
+router.get('/edit-multiplechoice/:id', function (req, res, next) {
     var id = req.params.id;
     Survey.findById(id, function (error, survey) {
         if (error) {
@@ -123,17 +168,16 @@ router.get('/:id', function (req, res, next) {
             res.end(error);
         }
         else {
-            //show the edit view
-            res.render('survey/edit', {
-                title: 'Survey Details',
+            res.render('survey/edit-multiplechoice', {
+                title: 'Edit Multiple Choice Questions',
                 survey: survey,
                 displayName: req.user ? req.user.displayName : ''
             });
         }
     });
 });
-// POST edit page - update the selected survey
-router.post('/:id', function (req, res, next) {
+// Post Edits - Short Questions
+router.post('/edit-multiplechoice/:id', function (req, res, next) {
     // grab the id from the url parameter
     var id = req.params.id;
     // create and populate an survey object
