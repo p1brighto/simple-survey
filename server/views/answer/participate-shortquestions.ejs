@@ -38,6 +38,11 @@
               <label for="surveyQuestion5"><%= survey.shortQuest5 %></label>
               <input type="text" name="shortAnswer5" class="form-control" />
             </fieldset>
+            <fieldset class="form-group">
+              <input type="hidden" name="displayName" value="<%= displayName %>" class="form-control" />
+              <input type="hidden" name="surveyType" value="shortQuestion" class="form-control" />
+              <input type="hidden" name="surveyTitle" value="surveyTitle" class="form-control" />
+            </fieldset>
             <fieldset class="form-group text-right row">
               <div class="col-md-4">
                 <input type="submit" class="btn btn-success" value="Submit" />

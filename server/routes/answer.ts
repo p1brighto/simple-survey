@@ -31,15 +31,15 @@ router.get('/participate-shortquestions/:id', (req: express.Request, res: expres
 });
 
 // Post answer
-router.post('/:id', function(req: express.Request, res: express.Response, next: any) {
+router.post('/participate-shortquestions/:id', function(req: express.Request, res: express.Response, next: any) {
   Answer.create({
     surveyTitle: req.body.surveyTitle,
-    SurveyType: req.body.surveyType,
-    shortQuest1: req.body.shortAnswer1,
-    shortQuest2: req.body.shortAnswer2,
-    shortQuest3: req.body.shortAnswer3,
-    shortQuest4: req.body.shortAnswer4,
-    shortQuest5: req.body.shortAnswer5,
+    surveyType: req.body.surveyType,
+    shortAnswer1: req.body.shortAnswer1,
+    shortAnswer2: req.body.shortAnswer2,
+    shortAnswer3: req.body.shortAnswer3,
+    shortAnswer4: req.body.shortAnswer4,
+    shortAnswer5: req.body.shortAnswer5,
     displayName: req.body.displayName
   }, function(error, Answer) {
     if (error) {
