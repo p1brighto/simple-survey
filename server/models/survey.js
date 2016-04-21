@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 var surveySchema = new mongoose.Schema({
     surveyTitle: String,
-    SurveyType: String,
+    surveyType: String,
     shortQuest1: String,
     shortQuest2: String,
     shortQuest3: String,

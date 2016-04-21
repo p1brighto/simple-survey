@@ -20,7 +20,7 @@
           <tr>
             <th class="col-md-1">#</th>
             <th class="col-md-5">Survey Title</th>
-            <th class="col-md-2">Date Created</th>
+            <th class="col-md-2">Survey Type</th>
             <th class="col-md-2">Author</th>
             <th class="col-md-2"></th>
           </tr>
@@ -30,7 +30,7 @@
           <tr>
             <td class="col-md-1"><%= count %></td>
             <td class="col-md-5"><%= survey[i].surveyTitle %></td>
-            <td class="col-md-2"><%= survey[i].created %></td>
+            <td class="col-md-2"><%= survey[i].surveyType %></td>
             <td class="col-md-2"><%= survey[i].displayName %></td>
             <td class="col-md-2"><a href="/answer/<%= survey[i]._id %>" class="btn-dash"><i class="ion-android-done"></i> Participate</a></td>
           </tr>
