@@ -42,7 +42,17 @@
               <% } %>
             </td>
             <td class="col-md-2"><%= survey[i].displayName %></td>
-            <td class="col-md-2"><a href="/answer/<%= survey[i]._id %>" class="btn-dash"><i class="ion-android-done"></i> Participate</a></td>
+            <td class="col-md-2">
+             <%
+                if (survey[i].surveyType == "shortQuestion") {
+              %>
+              <a href="/answer/participate-shortquestions/<%= survey[i]._id %>" class="btn-dash"><i class="ion-android-done"></i> Participate</a>
+              <%
+                } else if (survey[i].surveyType == "multipleChoiceQuestion") {
+              %>
+              <a href="/answer/participate-multiplechoice/<%= survey[i]._id %>" class="btn-dash"><i class="ion-android-done"></i> Participate</a>
+              <% } %>
+            </td>
           </tr>
           <% } %>
         </tbody>

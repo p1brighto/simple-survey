@@ -1,0 +1,176 @@
+<% include ../partials/header.ejs %>
+<% include ../partials/navbar.ejs %>
+
+  <section id="top-banner" class="section bg-intro intro-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 page-title">
+          <h2>Survey : <span class="capitalize edit-title"><%= survey.surveyTitle %></span></h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="user-profile" class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <form method="post" class="login-form">
+            <h2><%= survey.surveyTitle %></h2>
+            <hr class="medium"/>
+            <fieldset class="form-group">
+              <label for="quest"><%= survey.shortQuest1 %></label>
+            </fieldset>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest1Opt1"><%= survey.quest1Opt1 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest1Opt2"><%= survey.quest1Opt2 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest1Opt3"><%= survey.quest1Opt3 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest1Opt4"><%= survey.quest1Opt4 %></label>
+                </div>
+              </div>
+            </div>
+            <hr/>
+            <fieldset class="form-group">
+              <label for="quest"><%= survey.shortQuest2 %></label>
+            </fieldset>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest1Opt1"><%= survey.quest2Opt1 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest2Opt2"><%= survey.quest2Opt2 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest2Opt3"><%= survey.quest2Opt3 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest2Opt4"><%= survey.quest2Opt4 %></label>
+                </div>
+              </div>
+            </div>
+            <hr/>
+            <fieldset class="form-group">
+              <label for="quest"><%= survey.shortQuest3 %></label>
+            </fieldset>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest3Opt1"><%= survey.quest3Opt1 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest3Opt2"><%= survey.quest3Opt2 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest3Opt3"><%= survey.quest3Opt3 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest3Opt4"><%= survey.quest3Opt4 %></label>
+                </div>
+              </div>
+            </div>
+            <hr/><fieldset class="form-group">
+              <label for="quest"><%= survey.shortQuest4 %></label>
+            </fieldset>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest4Opt1"><%= survey.quest4Opt1 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest4Opt2"><%= survey.quest4Opt2 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest4Opt3"><%= survey.quest4Opt3 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest4Opt4"><%= survey.quest4Opt4 %></label>
+                </div>
+              </div>
+            </div>
+            <hr/><fieldset class="form-group">
+              <label for="quest"><%= survey.shortQuest5 %></label>
+            </fieldset>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest5Opt1"><%= survey.quest5Opt1 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest5Opt2"><%= survey.quest5Opt2 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest5Opt3"><%= survey.quest5Opt3 %></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="radio">
+                    <label><input type="radio" name="quest5Opt4"><%= survey.quest5Opt4 %></label>
+                </div>
+              </div>
+            </div>
+            <hr/>
+            <fieldset class="form-group">
+              <input type="hidden" name="displayName" value="<%= displayName %>" class="form-control" />
+              <input type="hidden" name="surveyType" value="multipleChoiceQuestion" class="form-control" />
+            </fieldset>
+            <fieldset class="form-group text-right row">
+              <div class="col-md-4">
+                <input type="submit" class="btn btn-success" value="Update" /> 
+              </div>
+              <div class="col-md-4">
+                <a href="/survey">
+                  <input type="button" class="btn" value="Cancel"/>
+                </a>                            
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+          <h2>Create your own survey!</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, libero voluptates. Cumque consectetur vel voluptate suscipit pariatur!</p>
+          <p>Voluptate officia ipsa officiis vero, est tempore quas possimus nulla mollitia id, blanditiis.</p>
+          <a href="/register" class="btn btn-default btn-blue">Register Now</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<% include ../partials/footer.ejs %>
