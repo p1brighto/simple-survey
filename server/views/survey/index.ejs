@@ -37,12 +37,13 @@
             </tr>
           </thead>
           <tbody>
-            <% for (var i = 0; i < survey.length; i++) {
-            if (survey[i].displayName == displayName) { %>  
+            <%
+              var count = 0; for (var i = 0; i < survey.length; i++) {
+              if (survey[i].displayName == displayName) { count ++;%>  
             <tr>
-              <td class="col-md-1"><%= i %></td>
+              <td class="col-md-1"><%= count %></td>
               <td class="col-md-5"><%= survey[i].surveyTitle %></td>
-              <td class="col-md-2"><%= survey[i].created %></td>
+              <td class="col-md-2 date-created"><%= (survey[i].dateCreated).toString('yyyy-MM-dd') %></td>
               <td class="col-md-2"><a href="/survey/<%= survey[i]._id %>" class="btn-dash"><i class="ion-document-text"></i> Edit</a></td>
               <td class="col-md-2"><a href="/survey/delete/<%= survey[i]._id %>" class="btn-dash" onclick="return confirm('Are you sure you want to delete this ?');"><i class="ion-trash-a"></i> Delete</a></td>
             </tr>

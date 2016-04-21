@@ -10,8 +10,8 @@ var surveySchema = new mongoose.Schema({
     shortQuest5: String,
     activeTill: Date,
     isActive: Boolean,
-    dateCreated: Date,
-    dateUpdated: Date,
+    dateCreated: { type: Date, default: Date.now },
+    dateUpdated: { type: Date, default: Date.now },
     displayName: String
 }, { collection: 'surveyCollection' });
 exports.Survey = mongoose.model('Survey', surveySchema);

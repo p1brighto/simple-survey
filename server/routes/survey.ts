@@ -4,8 +4,8 @@ var router = express.Router();
 
 // db references
 import mongoose = require('mongoose');
-import surveyModel = require('../models/survey');
 
+import surveyModel = require('../models/survey');
 import Survey = surveyModel.Survey;
 
 /* Utility Function to check if user is authenticated */
@@ -35,14 +35,6 @@ router.get('/',requireAuth, (req: express.Request, res: express.Response, next: 
     }
   });
 });
-
-/* GET browse surveys page. */
-/*router.get('/browse-surveys', (req: express.Request, res: express.Response, next: any) => {
-  res.render('browse-surveys', {
-    title: 'Browse-surveys',
-    displayName: req.user ? req.user.displayName : ''
-  });
-});*/
 
 // Show page with survey options to create
 router.get('/add', requireAuth, function(req: express.Request, res: express.Response, next: any) {

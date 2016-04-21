@@ -14,6 +14,7 @@ import userModel = require('./models/user');
 import User = userModel.User;
 
 import session = require('express-session');
+
 // flash messages
 import flash = require('connect-flash');
 import passport = require('passport');
@@ -28,6 +29,7 @@ var myerror = new CustomError();
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var survey = require('./routes/survey');
+var answer = require('./routes/answer');
 
 var app = express();
 
@@ -43,9 +45,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 // Initialize Session
 app.use(session({
-    secret: 'someSecret',
-    saveUninitialized: false,
-    resave: true
+  secret: 'someSecret',
+  saveUninitialized: false,
+  resave: true
 }));
 
 app.use(passport.initialize());
@@ -64,7 +66,8 @@ passport.deserializeUser(User.deserializeUser());
 // Route Definitions
 app.use('/', routes);
 app.use('/users', users);
-app.use('/survey',survey);
+app.use('/survey', survey);
+app.use('/answer', answer);
 
 // connect to mongodb with mongoose
 var DB = require('./config/db');
@@ -74,14 +77,14 @@ mongoose.connect(DB.url);
 var db: mongoose.Connection = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection Error: '));
 db.once('open', function(callback) {
-    console.log('Connected to mongoLab');
+  console.log('Connected to mongoLab');
 });
 
 // catch 404 and forward to error handler
 app.use((req: express.Request, res: express.Response, next: any) => {
-    var error = new CustomError('Not Found');
-    error.status = 404;
-    next(error);
+  var error = new CustomError('Not Found');
+  error.status = 404;
+  next(error);
 });
 
 // error handlers
@@ -89,23 +92,23 @@ app.use((req: express.Request, res: express.Response, next: any) => {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use((error: CustomError, req: express.Request, res: express.Response, next: any) => {
-        res.status(error.status || 500);
-        res.render('error', {
-            message: error.message,
-            error: error
-        });
+  app.use((error: CustomError, req: express.Request, res: express.Response, next: any) => {
+    res.status(error.status || 500);
+    res.render('error', {
+      message: error.message,
+      error: error
     });
+  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use((error: CustomError, req: express.Request, res: express.Response, next: any) => {
-    res.status(error.status || 500);
-    res.render('error', {
-        message: error.message,
-        error: {}
-    });
+  res.status(error.status || 500);
+  res.render('error', {
+    message: error.message,
+    error: {}
+  });
 });
 
 module.exports = app;

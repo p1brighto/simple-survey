@@ -54,21 +54,20 @@
             <fieldset class="form-group row">
               <div class="col-md-6">
                 <label for="surveyContent">Active till : </label>
-                <input type="date" name="activeTill" id="activeTill" class="pull-left">
+                <input type="date" name="dateCreated" id="dateCreated" class="pull-left">
               </div>
               <div class="col-md-6">
                 <label for="surveyContent">Status</label>
                   <div class="radio">
-                    <label><input type="radio" name="isActive" checked>Active</label>
+                    <label><input type="radio" name="statusActive">Active</label>
                   </div>
                   <div class="radio">
-                    <label><input type="radio" name="isActive">Inactive</label>
+                    <label><input type="radio" name="statusNotActive">Inactive</label>
                   </div>
               </div>
             </fieldset>
             <fieldset class="form-group">
               <input type="hidden" name="displayName" value="<%= displayName %>" class="form-control"  required />
-              <input type="hidden" name="surveyType" value="shortQuestion" class="form-control"  required />
             </fieldset>
             <fieldset class="form-group text-right row">
               <div class="col-md-6">

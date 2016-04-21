@@ -1,14 +1,11 @@
-<% include partials/header.ejs %>
-<% include partials/navbar.ejs %>
+<% include ../partials/header.ejs %>
+<% include ../partials/navbar.ejs %>
 
 <section id="top-banner" class="section bg-intro intro-section">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 page-title">
-        <h2>Welcome to your dashboard, <span class="capitalize"><%= displayName %></span></h2>
-      </div>
-      <div class="col-md-4">
-        <a href="/survey/add" class="btn btn-default btn-blue pull-right"><i class="ion-android-add-circle"></i> Add New Survey</a>
+      <div class="col-md-12 page-title">
+        <h2>My Surveys</h2>
       </div>
     </div>
   </div>
@@ -21,10 +18,10 @@
       <div class="col-md-3">
         <div class="left-sidebar">
           <ul>
-            <li class="active"><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/users/profile">User Profile</a></li>
-            <li><a href="/survey">My Surveys</a></li>
-            <li><a href="/logout">Sign Out</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li class="active"><a href="/survey">My Surveys</a></li>
+            <li><a href="/survey/add">Add Survey</a></li>
+            <li><a href="/survey">Edit Survey</a></li>
           </ul>
         </div>
       </div>
@@ -40,21 +37,22 @@
             </tr>
           </thead>
           <tbody>
-            <% var count = 0; for (var i = 0; i < survey.length; i++) { count ++; %> 
+            <% for (var i = 0; i < survey.length; i++) {
+            if (survey[i].displayName == displayName) { %>  
             <tr>
-              <td class="col-md-1"><%= count %></td>
+              <td class="col-md-1"><%= i %></td>
               <td class="col-md-5"><%= survey[i].surveyTitle %></td>
               <td class="col-md-2"><%= survey[i].created %></td>
               <td class="col-md-2"><a href="/survey/<%= survey[i]._id %>" class="btn-dash"><i class="ion-document-text"></i> Edit</a></td>
               <td class="col-md-2"><a href="/survey/delete/<%= survey[i]._id %>" class="btn-dash" onclick="return confirm('Are you sure you want to delete this ?');"><i class="ion-trash-a"></i> Delete</a></td>
             </tr>
-            <% } %>
+            <% } } %>
           </tbody>
-        </table>        
+        </table>       
       </div>
 
     </div>
   </div>
 </section>
 
-<% include partials/footer.ejs %>
+<% include ../partials/footer.ejs %>

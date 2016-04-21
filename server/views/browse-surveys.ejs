@@ -22,17 +22,17 @@
             <th class="col-md-5">Survey Title</th>
             <th class="col-md-2">Date Created</th>
             <th class="col-md-2">Author</th>
-            <th class="col-md-2">Participate</th>
+            <th class="col-md-2"></th>
           </tr>
         </thead>
         <tbody>
-          <% for (var i = 0; i < survey.length; i++) { %>  
+          <% var count = 0; for (var i = 0; i < survey.length; i++) { count ++; %>  
           <tr>
-            <td class="col-md-1"><%= i %></td>
+            <td class="col-md-1"><%= count %></td>
             <td class="col-md-5"><%= survey[i].surveyTitle %></td>
             <td class="col-md-2"><%= survey[i].created %></td>
             <td class="col-md-2"><%= survey[i].displayName %></td>
-            <td class="col-md-2"><a href="/survey/<%= survey[i]._id %>" class="btn-dash"><i class="ion-android-done"></i> Participate</a></td>
+            <td class="col-md-2"><a href="/answer/<%= survey[i]._id %>" class="btn-dash"><i class="ion-android-done"></i> Participate</a></td>
           </tr>
           <% } %>
         </tbody>
