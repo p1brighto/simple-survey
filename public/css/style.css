@@ -537,3 +537,11 @@ Steps
 .steps h5:after {
 	content: none;
 }
+
+ol {
+	list-style: decimal inside;
+}
+
+ol li {
+	display: list-item;
+}

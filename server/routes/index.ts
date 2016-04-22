@@ -17,16 +17,18 @@ import Answer = answerModel.Answer;
 
 /* GET home page. */
 router.get('/', (req: express.Request, res: express.Response, next: any) => {
-  res.render('index', { 
-    title: 'Home', 
-    displayName: req.user ? req.user.displayName : '' });
+  res.render('index', {
+    title: 'Home',
+    displayName: req.user ? req.user.displayName : ''
+  });
 });
 
 /* GET about page. */
 router.get('/about-us', (req: express.Request, res: express.Response, next: any) => {
-  res.render('about-us', { 
+  res.render('about-us', {
     title: 'About-us',
-    displayName: req.user ? req.user.displayName : '' });
+    displayName: req.user ? req.user.displayName : ''
+  });
 });
 
 // Show surveys
@@ -70,7 +72,7 @@ router.get('/dashboard', (req: express.Request, res: express.Response, next: any
 /* Get Results */
 router.get('/results', (req: express.Request, res: express.Response, next: any) => {
   // use the Survey model to query the Surveys collection
-  Answer.find(function(error, answer) {
+  Survey.find(function(error, surveys) {
     if (error) {
       console.log(error);
       res.end(error);
@@ -79,7 +81,26 @@ router.get('/results', (req: express.Request, res: express.Response, next: any) 
       // no error, we found a list of surveys
       res.render('results', {
         title: 'Results Listing',
-        answer: answer,
+        surveys: surveys,
+        displayName: req.user ? req.user.displayName : ''
+      });
+    }
+  });
+});
+
+router.get('/results/:id', (req: express.Request, res: express.Response, next: any) => {
+  var id = req.params.id;
+  // use survey id to find related answers
+  Answer.find({ surveyId: id }, function(error, answers) {
+    if (error) {
+      console.log(error);
+      res.end(error);
+    }
+    else {
+      // no error, we found a list of answers
+      res.render('answers', {
+        title: 'Answers Listing',
+        answers: answers,
         displayName: req.user ? req.user.displayName : ''
       });
     }
@@ -108,11 +129,12 @@ router.get('/results-view', (req: express.Request, res: express.Response, next: 
 /* GET contact page. */
 router.get('/contact-us', (req: express.Request, res: express.Response, next: any) => {
   req.flash('successmessage', 'Your message has been submitted. We will get back to you shortly!');
-  req.flash('errormessage','Oops, something went wrong!');
-  res.render('contact-us', { 
+  req.flash('errormessage', 'Oops, something went wrong!');
+  res.render('contact-us', {
     title: 'Contact-us',
     messages: null,
-    displayName: req.user ? req.user.displayName : '' });
+    displayName: req.user ? req.user.displayName : ''
+  });
 });
 
 /* Email processing */
@@ -130,20 +152,21 @@ router.post('/contact-us', (req: express.Request, res: express.Response, next: a
     "<strong>Phone:</strong> " + req.body.phone + "<br><br>" +
     req.body.message
   },
-  (err, json) => {
-    if (err) { res.status(500).json('error'); 
-  }
-  res.render('contact-us', { 
-    title: 'Contact-us',
-    messages: req.flash('successmessage')
-  });
+    (err, json) => {
+      if (err) {
+        res.status(500).json('error');
+      }
+      res.render('contact-us', {
+        title: 'Contact-us',
+        messages: req.flash('successmessage')
+      });
 
-});
+    });
 });
 
 /* Render Login Page */
-router.get('/login', (req:express.Request, res: express.Response, next:any) => {
-  if(!req.user) {
+router.get('/login', (req: express.Request, res: express.Response, next: any) => {
+  if (!req.user) {
     res.render('login', {
       title: 'Login',
       messages: req.flash('loginMessage'),
@@ -163,12 +186,12 @@ router.post('/login', passport.authenticate('local', {
 }));
 
 /* Render Password Reset page */
-router.get('/reset', (req:express.Request, res: express.Response, next:any) => {
-  if(req.user) {
+router.get('/reset', (req: express.Request, res: express.Response, next: any) => {
+  if (req.user) {
     res.render('reset', {
       title: 'Reset',
-      displayName: req.user ? req.user.displayName : '' 
-    });  
+      displayName: req.user ? req.user.displayName : ''
+    });
   }
   else {
     return res.redirect('/login');
@@ -176,16 +199,16 @@ router.get('/reset', (req:express.Request, res: express.Response, next:any) => {
 });
 
 /* Process Password Reset Request */
-router.post('/reset',(req:express.Request, res: express.Response, next:any) => {
+router.post('/reset', (req: express.Request, res: express.Response, next: any) => {
   console.log(req.user.username);
-  User.findOne({'username':req.user.username}, (err, user) => {
-    user.setPassword(req.body.password, (err) =>{
-      if(err) {
+  User.findOne({ 'username': req.user.username }, (err, user) => {
+    user.setPassword(req.body.password, (err) => {
+      if (err) {
         console.log(err);
         next(err);
       } else {
-        user.save((err) =>{
-          if(err) {
+        user.save((err) => {
+          if (err) {
             console.log(err);
           }
 
@@ -193,13 +216,13 @@ router.post('/reset',(req:express.Request, res: express.Response, next:any) => {
           res.redirect('/users');
         });
       }
-    }); 
+    });
   });
 });
 
 /* Render Registration page */
-router.get('/register', (req:express.Request, res: express.Response, next:any) => {
-  if(!req.user) {
+router.get('/register', (req: express.Request, res: express.Response, next: any) => {
+  if (!req.user) {
     res.render('register', {
       title: 'Register',
       messages: req.flash('registerMessage'),
@@ -212,30 +235,30 @@ router.get('/register', (req:express.Request, res: express.Response, next:any) =
 });
 
 /* Process Registration Request */
-router.post('/register', (req:express.Request, res: express.Response, next:any) => {
+router.post('/register', (req: express.Request, res: express.Response, next: any) => {
 
   // attempt to register user
   User.register(new User(
-  { 
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    phone: req.body.phone,
-    username: req.body.username,
-    displayName: req.body.displayName,
-    password: req.body.password,
-    email: req.body.email
-  }), req.body.password, (err) => {
-    if (err) {
-      console.log('Error Inserting New Data');
-      if (err.name == 'UserExistsError') {
-        req.flash('registerMessage', 'Registration Error: User Already Exists!');
+    {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phone: req.body.phone,
+      username: req.body.username,
+      displayName: req.body.displayName,
+      password: req.body.password,
+      email: req.body.email
+    }), req.body.password, (err) => {
+      if (err) {
+        console.log('Error Inserting New Data');
+        if (err.name == 'UserExistsError') {
+          req.flash('registerMessage', 'Registration Error: User Already Exists!');
+        }
+        return res.render('register', {
+          title: 'Register',
+          messages: req.flash('registerMessage'),
+          displayName: req.user ? req.user.displayName : ''
+        });
       }
-      return res.render('register', {
-        title: 'Register',
-        messages: req.flash('registerMessage'),
-        displayName: req.user ? req.user.displayName : ''
-      });
-    }
       // if registration is successful
       return passport.authenticate('local')(req, res, () => {
         res.redirect('/users');
@@ -244,7 +267,7 @@ router.post('/register', (req:express.Request, res: express.Response, next:any) 
 });
 
 /* Process Logout Request */
-router.get('/logout', (req:express.Request, res: express.Response) => {
+router.get('/logout', (req: express.Request, res: express.Response) => {
   req.logOut();
   res.redirect('/login');
 });

@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 page-title">
-        <h2>Survey Results : <%= answer.surveyTitle %></h2>
+        <h2>Survey Results : <%= answer[i].surveyTitle %></h2>
       </div>
     </div>
   </div>
@@ -27,26 +27,17 @@
         </div>
       </div>
       <div class="col-md-9">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th class="col-md-5">Survey Title</th>
-              <th class="col-md-2">Survey Type</th>
-              <th class="col-md-2">Responses</th>
-              <th class="col-md-2"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="col-md-5"><%= answer.surveyTitle %></td>
-              <td class="col-md-2"><%= answer.shortAnswer1 %></td>
-              <td class="col-md-2"><%= answer.shortAnswer2 %></td>
-              <td class="col-md-2"><%= answer.shortAnswer3 %></td>
-              <td class="col-md-2"><%= answer.shortAnswer4 %></td>
-              <td class="col-md-2"><%= answer.shortAnswer5 %></td>
-            </tr>
-          </tbody>
-        </table>       
+<ul>      
+<% for (var i = 0; i < answer.length; i++) {
+console.log('yay', answer.length) %>
+  <li><%= answer[i].surveyTitle %></li>
+  <li><%= answer[i].shortAnswer1 %></li>
+  <li><%= answer[i].shortAnswer2 %></li>
+  <li><%= answer[i].shortAnswer3 %></li>
+  <li><%= answer[i].shortAnswer4 %></li>
+  <li><%= answer[i].shortAnswer5 %></li>
+<% } %>  
+</ul>  
       </div>
 
     </div>

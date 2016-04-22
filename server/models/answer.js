@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var answerSchema = new mongoose.Schema({
     surveyTitle: String,
     surveyType: String,
+    surveyId: String,
     shortAnswer1: String,
     shortAnswer2: String,
     shortAnswer3: String,

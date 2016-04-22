@@ -14,13 +14,15 @@ var Answer = answerModel.Answer;
 router.get('/', function (req, res, next) {
     res.render('index', {
         title: 'Home',
-        displayName: req.user ? req.user.displayName : '' });
+        displayName: req.user ? req.user.displayName : ''
+    });
 });
 /* GET about page. */
 router.get('/about-us', function (req, res, next) {
     res.render('about-us', {
         title: 'About-us',
-        displayName: req.user ? req.user.displayName : '' });
+        displayName: req.user ? req.user.displayName : ''
+    });
 });
 // Show surveys
 router.get('/browse-surveys', function (req, res, next) {
@@ -61,7 +63,7 @@ router.get('/dashboard', function (req, res, next) {
 /* Get Results */
 router.get('/results', function (req, res, next) {
     // use the Survey model to query the Surveys collection
-    Answer.find(function (error, answer) {
+    Survey.find(function (error, surveys) {
         if (error) {
             console.log(error);
             res.end(error);
@@ -70,7 +72,25 @@ router.get('/results', function (req, res, next) {
             // no error, we found a list of surveys
             res.render('results', {
                 title: 'Results Listing',
-                answer: answer,
+                surveys: surveys,
+                displayName: req.user ? req.user.displayName : ''
+            });
+        }
+    });
+});
+router.get('/results/:id', function (req, res, next) {
+    var id = req.params.id;
+    // use survey id to find related answers
+    Answer.find({ surveyId: id }, function (error, answers) {
+        if (error) {
+            console.log(error);
+            res.end(error);
+        }
+        else {
+            // no error, we found a list of answers
+            res.render('answers', {
+                title: 'Answers Listing',
+                answers: answers,
                 displayName: req.user ? req.user.displayName : ''
             });
         }
@@ -100,7 +120,8 @@ router.get('/contact-us', function (req, res, next) {
     res.render('contact-us', {
         title: 'Contact-us',
         messages: null,
-        displayName: req.user ? req.user.displayName : '' });
+        displayName: req.user ? req.user.displayName : ''
+    });
 });
 /* Email processing */
 router.post('/contact-us', function (req, res, next) {

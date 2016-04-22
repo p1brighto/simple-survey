@@ -34,36 +34,16 @@
               <th class="col-md-5">Survey Title</th>
               <th class="col-md-2">Survey Type</th>
               <th class="col-md-2">Responses</th>
-              <th class="col-md-2"></th>
             </tr>
           </thead>
           <tbody>
-            <% var count = 0; for (var i = 0; i < answer.length; i++) { count ++; %> 
+            <% for (var i = 0; i < surveys.length; i++) { %> 
             <tr>
-              <td class="col-md-1"><%= count %></td>
-              <td class="col-md-5"><%= answer[i].surveyTitle %></td>
-              <td class="col-md-2"><%= answer.length %></td>
+              <td class="col-md-1"><%= i + 1 %></td>
+              <td class="col-md-5"><%= surveys[i].surveyTitle %></td>
+              <td class="col-md-2"><%= surveys[i].surveyType %></td>
               <td class="col-md-2">
-              <%
-                if (answer[i].surveyType == "shortQuestion") {
-              %>
-                Short Questions
-              <%
-                } else if (answer[i].surveyType == "multipleChoiceQuestion") {
-              %>
-                Multiple Choice
-              <% } %>
-              </td>
-              <td class="col-md-2">
-              <%
-                if (answer[i].surveyType == "shortQuestion") {
-              %>
-                <a href="/results/<%= answer[i]._id %>" class="btn-dash"><i class="ion-document-text"></i> View</a>
-              <%
-                } else if (answer[i].surveyType == "multipleChoiceQuestion") {
-              %>
-                <a href="/results/<%= answer[i]._id %>" class="btn-dash"><i class="ion-document-text"></i> View</a>
-              <% } %>
+                <a href="/results/<%= surveys[i]._id %>" class="btn-dash"><i class="ion-document-text"></i> View</a>
               </td>
             </tr>
             <% } %>

@@ -31,9 +31,11 @@ router.get('/participate-shortquestions/:id', (req: express.Request, res: expres
 
 // Post answer
 router.post('/participate-shortquestions/:id', function(req: express.Request, res: express.Response, next: any) {
+  var id = req.params.id;
   Answer.create({
     surveyTitle: req.body.surveyTitle,
     surveyType: req.body.surveyType,
+    surveyId: id,
     shortAnswer1: req.body.shortAnswer1,
     shortAnswer2: req.body.shortAnswer2,
     shortAnswer3: req.body.shortAnswer3,
@@ -71,9 +73,11 @@ router.get('/participate-multiplechoice/:id', (req: express.Request, res: expres
 
 // Post answer
 router.post('/participate-multiplechoice/:id', function(req: express.Request, res: express.Response, next: any) {
+  var id = req.params.id;
   Answer.create({
     surveyTitle: req.body.surveyTitle,
     surveyType: req.body.surveyType,
+    surveyId: id,
     answer1Opt1: req.body.answer1Opt1,
     answer1Opt2: req.body.answer1Opt2,
     answer1Opt3: req.body.answer1Opt3,
