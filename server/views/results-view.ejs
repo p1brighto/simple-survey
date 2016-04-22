@@ -1,0 +1,56 @@
+<% include partials/header.ejs %>
+<% include partials/navbar.ejs %>
+
+<section id="top-banner" class="section bg-intro intro-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 page-title">
+        <h2>Survey Results : <%= answer.surveyTitle %></h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="user-profile" class="section">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-3">
+        <div class="left-sidebar">
+          <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/survey">My Surveys</a></li>
+            <li><a href="/survey/add">Add Survey</a></li>
+            <li><a href="/survey">Edit Survey</a></li>
+            <li class="active"><a href="/results">Survey Result</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="col-md-5">Survey Title</th>
+              <th class="col-md-2">Survey Type</th>
+              <th class="col-md-2">Responses</th>
+              <th class="col-md-2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-md-5"><%= answer.surveyTitle %></td>
+              <td class="col-md-2"><%= answer.shortAnswer1 %></td>
+              <td class="col-md-2"><%= answer.shortAnswer2 %></td>
+              <td class="col-md-2"><%= answer.shortAnswer3 %></td>
+              <td class="col-md-2"><%= answer.shortAnswer4 %></td>
+              <td class="col-md-2"><%= answer.shortAnswer5 %></td>
+            </tr>
+          </tbody>
+        </table>       
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<% include partials/footer.ejs %>

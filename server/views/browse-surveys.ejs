@@ -29,7 +29,7 @@
           <% var count = 0; for (var i = 0; i < survey.length; i++) { count ++; %>  
           <tr>
             <td class="col-md-1"><%= count %></td>
-            <td class="col-md-5"><a href="/answer/<%= survey[i]._id %>" class="btn-dash"><%= survey[i].surveyTitle %></a></td>
+            <td class="col-md-5"><strong><%= survey[i].surveyTitle %></strong></td>
             <td class="col-md-2">
              <%
                 if (survey[i].surveyType == "shortQuestion") {

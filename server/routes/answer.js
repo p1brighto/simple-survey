@@ -61,16 +61,30 @@ router.get('/participate-multiplechoice/:id', function (req, res, next) {
     });
 });
 // Post answer
-router.post('/:id', function (req, res, next) {
+router.post('/participate-multiplechoice/:id', function (req, res, next) {
     Answer.create({
         surveyTitle: req.body.surveyTitle,
-        SurveyType: req.body.surveyType,
-        shortQuest1: req.body.shortAnswer1,
-        shortQuest2: req.body.shortAnswer2,
-        shortQuest3: req.body.shortAnswer3,
-        shortQuest4: req.body.shortAnswer4,
-        shortQuest5: req.body.shortAnswer5,
-        displayName: req.body.displayName
+        surveyType: req.body.surveyType,
+        answer1Opt1: req.body.answer1Opt1,
+        answer1Opt2: req.body.answer1Opt2,
+        answer1Opt3: req.body.answer1Opt3,
+        answer1Opt4: req.body.answer1Opt4,
+        answer2Opt1: req.body.answer2Opt1,
+        answer2Opt2: req.body.answer2Opt2,
+        answer2Opt3: req.body.answer2Opt3,
+        answer2Opt4: req.body.answer2Opt4,
+        answer3Opt1: req.body.answer3Opt1,
+        answer3Opt2: req.body.answer3Opt2,
+        answer3Opt3: req.body.answer3Opt3,
+        answer3Opt4: req.body.answer3Opt4,
+        answer4Opt1: req.body.answer4Opt1,
+        answer4Opt2: req.body.answer4Opt2,
+        answer4Opt3: req.body.answer4Opt3,
+        answer4Opt4: req.body.answer4Opt4,
+        answer5Opt1: req.body.answer5Opt1,
+        answer5Opt2: req.body.answer5Opt2,
+        answer5Opt3: req.body.answer5Opt3,
+        answer5Opt4: req.body.answer5Opt4,
     }, function (error, Answer) {
         if (error) {
             console.log(error);

@@ -8,6 +8,8 @@ var userModel = require('../models/user');
 var User = userModel.User;
 var surveyModel = require('../models/survey');
 var Survey = surveyModel.Survey;
+var answerModel = require('../models/answer');
+var Answer = answerModel.Answer;
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {
@@ -51,6 +53,41 @@ router.get('/dashboard', function (req, res, next) {
             res.render('dashboard', {
                 title: 'Dashboard',
                 survey: survey,
+                displayName: req.user ? req.user.displayName : ''
+            });
+        }
+    });
+});
+/* Get Results */
+router.get('/results', function (req, res, next) {
+    // use the Survey model to query the Surveys collection
+    Answer.find(function (error, answer) {
+        if (error) {
+            console.log(error);
+            res.end(error);
+        }
+        else {
+            // no error, we found a list of surveys
+            res.render('results', {
+                title: 'Results Listing',
+                answer: answer,
+                displayName: req.user ? req.user.displayName : ''
+            });
+        }
+    });
+});
+router.get('/results-view', function (req, res, next) {
+    // use the Survey model to query the Surveys collection
+    Answer.find(function (error, answer) {
+        if (error) {
+            console.log(error);
+            res.end(error);
+        }
+        else {
+            // no error, we found a list of surveys
+            res.render('results-view', {
+                title: 'Results Listing',
+                answer: answer,
                 displayName: req.user ? req.user.displayName : ''
             });
         }

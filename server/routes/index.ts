@@ -11,6 +11,10 @@ import User = userModel.User;
 import surveyModel = require('../models/survey');
 import Survey = surveyModel.Survey;
 
+
+import answerModel = require('../models/answer');
+import Answer = answerModel.Answer;
+
 /* GET home page. */
 router.get('/', (req: express.Request, res: express.Response, next: any) => {
   res.render('index', { 
@@ -62,6 +66,44 @@ router.get('/dashboard', (req: express.Request, res: express.Response, next: any
     }
   });
 });
+
+/* Get Results */
+router.get('/results', (req: express.Request, res: express.Response, next: any) => {
+  // use the Survey model to query the Surveys collection
+  Answer.find(function(error, answer) {
+    if (error) {
+      console.log(error);
+      res.end(error);
+    }
+    else {
+      // no error, we found a list of surveys
+      res.render('results', {
+        title: 'Results Listing',
+        answer: answer,
+        displayName: req.user ? req.user.displayName : ''
+      });
+    }
+  });
+});
+
+router.get('/results-view', (req: express.Request, res: express.Response, next: any) => {
+  // use the Survey model to query the Surveys collection
+  Answer.find(function(error, answer) {
+    if (error) {
+      console.log(error);
+      res.end(error);
+    }
+    else {
+      // no error, we found a list of surveys
+      res.render('results-view', {
+        title: 'Results Listing',
+        answer: answer,
+        displayName: req.user ? req.user.displayName : ''
+      });
+    }
+  });
+});
+
 
 /* GET contact page. */
 router.get('/contact-us', (req: express.Request, res: express.Response, next: any) => {
