@@ -1,0 +1,83 @@
+<% include ../partials/header.ejs %>
+<% include ../partials/navbar.ejs %>
+
+  <section id="top-banner" class="section bg-intro intro-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 page-title">
+          <h2>User Profile</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%
+    for (var i = 0; i < users.length; i++) { 
+      if(users[i].displayName == displayName) {
+        currentUser = users[i].username;
+        userID = users[i]._id;
+        userFirstName = users[i].firstName;
+        userLastName = users[i].lastName;
+        userPass = users[i].password;
+        userEmail = users[i].email;
+        userDisplayName = users[i].displayName;
+        userPhone = users[i].phone;
+        userDateCreated = users[i].created;
+      }
+    }
+  %>
+
+  <section id="user-profile" class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+
+
+          <div class="left-sidebar">
+            <ul>
+              <li><a href="/dashboard">Dashboard</a></li>
+              <li class="active"><a href="/users/profile">My Account </a></li>
+              <li><a href="/users/<%= userID %>">Edit my Account</a></li>
+              <li><a href="/logout">Sign Out</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <h2>Profile Details</h2>
+
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td><h4>Username</h4></td>
+                <td><%= userDisplayName %></td>
+              </tr>
+              <tr>
+                <td><h4>First Name</h4></td>
+                <td><%= userFirstName %></td>
+              </tr>
+              <tr>
+                <td><h4>Last Name</h4></td>
+                <td><%= userLastName %></td>
+              </tr>
+              <tr>
+                <td><h4>Email</h4></td>
+                <td><%= userEmail %></td>
+              </tr>
+              <tr>
+                <td><h4>Phone Number</h4></td>
+                <td><%= userPhone %></td>
+              </tr>
+              <tr>
+                <td><h4>Date Created</h4></td>
+                <td><%= userDateCreated %></td>
+              </tr>
+            </tbody> 
+          </table>
+          
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+<% include ../partials/footer.ejs %>

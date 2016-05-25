@@ -1,0 +1,47 @@
+<% include ../partials/header.ejs %>
+<% include ../partials/navbar.ejs %>
+
+  <section id="top-banner" class="section bg-intro intro-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 page-title">
+          <h2>Choose Your Survey Type</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="user-profile" class="section">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-3">
+          <div class="left-sidebar">
+            <ul>
+              <li><a href="/dashboard">Dashboard</a></li>
+              <li><a href="/survey">My Surveys</a></li>
+              <li class="active"><a href="/survey/add">Add Survey</a></li>
+              <li><a href="/survey">Edit Survey</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            <div class="col-md-6 surveytype">
+              <i class="ion-document-text"></i>
+              <h4>Create a survey with 5 short questions</h4>
+              <a href="/survey/shortquestions-add" class="btn btn-blue">Get Started</a>
+            </div>
+            <div class="col-md-6 surveytype">
+              <i class="ion-disc"></i>
+              <h4>Create a survey with 5 multiple choice questions</h4>
+              <a href="/survey/multiplechoice-add" class="btn btn-blue">Get Started</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<% include ../partials/footer.ejs %>

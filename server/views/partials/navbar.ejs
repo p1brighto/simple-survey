@@ -1,0 +1,73 @@
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="/img/logo.png" alt="Simple Survey"></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="mobile-nav">    
+      <ul class="nav navbar-nav navbar-right">
+        <% if(title == "Home") { %>
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/browse-surveys">Browse Surveys</a></li>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+        <li class="menu-register"><a href="/register">Register</a></li>
+        <li class="menu-login"><a href="/login">Sign In</a></li>
+        <% } else if((title == "Browse-surveys") || (title == "Participate")) { %>
+        <li><a href="/">Home</a></li>
+        <li class="active"><a href="/browse-surveys">Browse Surveys</a></li>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+        <li class="menu-register"><a href="/register">Register</a></li>
+        <li class="menu-login"><a href="/login">Sign In</a></li>
+        <% } else if(title == "About-us") { %>
+        <li><a href="/">Home</a></li>
+        <li><a href="/browse-surveys">Browse Surveys</a></li>
+        <li class="active"><a href="/about-us">About Us</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+        <li class="menu-register"><a href="/register">Register</a></li>
+        <li class="menu-login"><a href="/login">Sign In</a></li>
+        <% } else if(title == "Contact-us") { %>
+        <li><a href="/">Home</a></li>
+        <li><a href="/browse-surveys">Browse Surveys</a></li>
+        <li><a href="/about-us">About Us</a></li>
+        <li class="active"><a href="/contact-us">Contact Us</a></li>
+        <li class="menu-register"><a href="/register">Register</a></li>
+        <li class="menu-login"><a href="/login">Sign In</a></li>
+        <% } else if(title == "Login") { %>
+        <li><a href="/">Home</a></li>
+        <li><a href="/browse-surveys">Browse Surveys</a></li>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+        <li class="menu-register"><a href="/register">Register</a></li>
+        <li class="menu-login active"><a href="/login">Sign In</a></li>
+        <% } else if(title == "Register") { %>
+        <li><a href="/">Home</a></li>
+        <li><a href="/browse-surveys">Browse Surveys</a></li>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+        <li class="menu-register active"><a href="/register">Register</a></li>
+        <li class="menu-login"><a href="/login">Sign In</a></li>
+        <% } %>
+        <% if(displayName) { %>
+        <li class="dropdown">
+          <a class="dropdown-toggle disabled" data-toggle="dropdown" href="/dashboard">Hey, <%= displayName %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/survey">My Surveys</a></li>
+            <li><a href="/users/profile">My Profile</a></li>
+            <li><a href="/logout"><i class="icon "></i> Logout</a></li>
+          </ul>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+
+  </div>
+</nav>
